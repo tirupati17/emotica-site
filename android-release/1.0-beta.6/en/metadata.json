@@ -1,0 +1,50 @@
+{
+  "title": "Emotica: Mood & Journal",
+  "shortDescription": "Log feelings, see your Mental Sky, and find exercises for your mood.",
+  "fullDescription": "Make room for how you feel.\n\nEmotica brings mood tracking, a personal journal and calming exercises into one place. Start with a feeling, add its intensity, and see it become a cloud in your Mental Sky.\n\nLOG A FEELING\nChoose from feelings such as happy, calm, anxious or tired. Add thoughts and what brought the feeling on, or keep your check-in short.\n\nSEE YOUR MENTAL SKY\nYour logged feelings appear as clouds. Tap a cloud to revisit an entry, move it into history, and return to it later.\n\nFIND AN EXERCISE\nGet suggestions informed by your recent feelings. Explore guided meditations, sleep sounds, stories and other exercises, or choose something yourself. Round cards are sounds; rectangular cards open guided exercises and other audio content.\n\nKEEP A JOURNAL\nWrite down thoughts in your own words. Keep your journal encrypted on your device, and use export and import to manage your backups. No account is needed to start.\n\nMAKE IT YOURS\nChoose a theme, adjust the look of your cards, and decide whether to enable daily reminders. Notifications are optional.\n\nSTART IN YOUR LANGUAGE\nOnboarding and feeling labels are available in English, Hindi, Bengali, Marathi, Telugu, Tamil, Gujarati, Urdu, Kannada, Odia, Malayalam, Punjabi, Spanish, Russian, German, Simplified Chinese and Traditional Chinese. Some other screens and exercise titles use English.\n\nLearn more: https://emotica.me",
+  "releaseNotes": "• Optional encrypted server backup is now available.\n• More reliable sessions across app restarts.\n• Clear onboarding, real exercise cards and more language choices.",
+  "headings": [
+    [
+      "A sky of",
+      "feelings."
+    ],
+    [
+      "Name your",
+      "feeling."
+    ],
+    [
+      "Find your",
+      "pause."
+    ],
+    [
+      "Sounds or",
+      "guidance."
+    ],
+    [
+      "Your words,",
+      "your space."
+    ],
+    [
+      "How do you",
+      "feel?"
+    ],
+    [
+      "Listen.",
+      "Unwind."
+    ]
+  ],
+  "featureHeading": [
+    "Room for every",
+    "feeling."
+  ],
+  "altText": {
+    "feature-graphic.png": "Emotica app icon and Room for every feeling. Five filled pastel clouds with emotion symbols, labels and three dots.",
+    "01-mental-sky.png": "Logged feelings appear as clouds in the Mental Sky.",
+    "02-feelings.png": "Choose a feeling and how strongly you feel it.",
+    "03-exercises.png": "Browse exercises and suggestions based on recent feelings.",
+    "04-exercise-cards.png": "Round sound cards and rectangular guided-exercise cards in the introduction.",
+    "05-journal.png": "Write a personal journal entry with a title and your thoughts.",
+    "06-emotion-log.png": "Choose feelings from illustrated categories in the full emotion log.",
+    "07-player.png": "Exercise player with artwork, audio controls and a sleep timer."
+  }
+}

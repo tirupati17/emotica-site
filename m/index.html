@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Emotica Milestone</title>
+<meta name="description" content="Grow your emotional intelligence with Emotica milestones." />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Emotica" />
+<meta property="og:title" content="Emotica Milestone" />
+<meta property="og:description" content="Grow your emotional intelligence with Emotica milestones." />
+<meta property="og:image" content="https://emotica.me/assets/share_image.png" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="icon" type="image/png" href="/assets/app_icon_transparent@2x.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Lexend', system-ui, -apple-system, sans-serif;
+    background: radial-gradient(circle at 50% 0%, #2a1f5e 0%, #1F174A 55%, #140f33 100%);
+    color: #fff; min-height: 100vh;
+    display: flex; align-items: center; justify-content: center; padding: 24px;
+  }
+  .card {
+    width: 100%; max-width: 440px; text-align: center;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 28px; padding: 28px; backdrop-filter: blur(8px);
+  }
+  .logo { height: 56px; margin: 0 auto 18px; display: block; }
+  .ring {
+    width: 96px; height: 96px; margin: 0 auto 18px; border-radius: 999px;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(124,58,237,0.16); border: 2px solid rgba(124,58,237,0.5);
+    font-size: 30px; font-weight: 700;
+  }
+  .badge {
+    display: none; font-size: 12px; font-weight: 600; letter-spacing: .04em;
+    text-transform: uppercase; color: #C4B5FD;
+    background: rgba(124,58,237,0.18); border: 1px solid rgba(124,58,237,0.35);
+    padding: 4px 12px; border-radius: 999px; margin-bottom: 14px;
+  }
+  h1 { font-size: 26px; font-weight: 700; line-height: 1.2; margin-bottom: 10px; }
+  p.desc { font-size: 15px; line-height: 1.5; color: rgba(255,255,255,0.75); margin-bottom: 6px; }
+  p.meta { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 24px; min-height: 8px; }
+  a.btn {
+    display: block; text-decoration: none; font-weight: 600; font-size: 16px;
+    padding: 15px; border-radius: 16px; margin-bottom: 12px; transition: opacity .15s;
+  }
+  a.btn:active { opacity: .85; }
+  a.primary { background: #7C3AED; color: #fff; }
+  a.store { background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(255,255,255,0.14); }
+  .foot { margin-top: 8px; font-size: 12px; color: rgba(255,255,255,0.4); }
+</style>
+</head>
+<body>
+  <main class="card">
+    <img class="logo" src="/assets/logoDarkMode@2x.webp" alt="Emotica" />
+    <div class="ring" id="ring">✦</div>
+    <span id="badge" class="badge"></span>
+    <h1 id="title">A milestone on Emotica</h1>
+    <p class="desc" id="desc">Small, steady steps that grow your emotional intelligence.</p>
+    <p class="meta" id="meta"></p>
+
+    <a class="btn primary" id="openApp" href="emotica://mentalsky">Open in Emotica</a>
+    <a class="btn store" href="https://apps.apple.com/us/app/emotica-your-emotions/id6757162931">Download Emotica</a>
+    <p class="foot">Emotional intelligence, journaling &amp; AI coaching</p>
+  </main>
+
+<script>
+(function () {
+  var SUPABASE_URL = 'https://klrpavxhdlpltevmqwlz.supabase.co';
+  var SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtscnBhdnhoZGxwbHRldm1xd2x6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjgyODg5MzAsImV4cCI6MjA4Mzg2NDkzMH0.4O-CiJuqVmJtdZjOSwb3GyG7qbooliUSjHxfFXu9poE';
+  var TYPE_LABEL = {
+    entry: 'Journal', checkin: 'Check-in', meditation: 'Meditate', affirmation: 'Affirm',
+    om_mantra: 'Mantra', sleep: 'Sleep', exercise: 'Practice', coach_voice: 'Talk',
+    coach_chat: 'Chat', steps: 'Steps', workout: 'Move', sleep_health: 'Sleep',
+    emotion_variety: 'Journal', trigger_variety: 'Journal'
+  };
+
+  // id from ?id= (text id like "calm_3") or a trailing /m/<id> path.
+  var params = new URLSearchParams(location.search);
+  var id = (params.get('id') || '').replace(/[^A-Za-z0-9_]/g, '');
+  if (!id) {
+    var mt = location.pathname.match(/\/m\/([^/?#]+)/);
+    if (mt) id = mt[1].replace(/[^A-Za-z0-9_]/g, '');
+  }
+  // Opening the app lands on the Mental Sky, where the milestone lives — with an
+  // id it also joins + opens that milestone.
+  document.getElementById('openApp').href = id
+    ? 'emotica://mentalsky?challenge=' + id
+    : 'emotica://mentalsky';
+
+  if (id) {
+    fetch(SUPABASE_URL + '/rest/v1/challenges?id=eq.' + id + '&locale=eq.en&enabled=eq.true' +
+          '&select=title,subtitle,description,qualifying,day_count,metric,color_hex',
+          { headers: { apikey: SUPABASE_ANON, Authorization: 'Bearer ' + SUPABASE_ANON } })
+      .then(function (r) { return r.ok ? r.json() : []; })
+      .then(function (rows) {
+        var m = rows && rows[0];
+        if (!m) return;
+        document.title = m.title + ' · Emotica';
+        document.getElementById('title').textContent = m.title;
+        if (m.description) document.getElementById('desc').textContent = m.description;
+        var b = document.getElementById('badge');
+        b.textContent = 'Milestone · ' + (TYPE_LABEL[m.qualifying] || 'Milestone');
+        b.style.display = 'inline-block';
+        var unit = m.metric === 'days' ? (m.day_count + ' days')
+                 : m.metric === 'first' ? 'One-time'
+                 : m.metric === 'variety' ? (m.day_count + ' to log')
+                 : (m.day_count + ' total');
+        document.getElementById('meta').textContent = m.subtitle ? (m.subtitle + ' · ' + unit) : unit;
+        var ring = document.getElementById('ring');
+        ring.textContent = m.day_count;
+        if (m.color_hex) { ring.style.borderColor = m.color_hex; }
+      })
+      .catch(function () {});
+  }
+})();
+</script>
+</body>
+</html>

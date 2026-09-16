@@ -1,0 +1,117 @@
+{
+  "version": "1.0-beta.6",
+  "images": [
+    {
+      "file": "1.0-beta.6/en/01-mental-sky.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 239986,
+      "sha256": "66d658bc266cb6903c0b0bcf9b39cba8e9a66a160004de0e584fdac5220dee3d"
+    },
+    {
+      "file": "1.0-beta.6/en/02-feelings.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 232465,
+      "sha256": "0b98fecc2edc18027cd13e0d22865f86603719fb5830e7cef9ebf6875bc4e86b"
+    },
+    {
+      "file": "1.0-beta.6/en/03-exercises.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 788382,
+      "sha256": "256e69fc6b34bb4679908009b328a491f9af6312b1b1d67505f32710e028409c"
+    },
+    {
+      "file": "1.0-beta.6/en/04-exercise-cards.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 408901,
+      "sha256": "2b81b14845aed399ad2a10347953fbac9553daeebc2b2f11e4cca214e37ea316"
+    },
+    {
+      "file": "1.0-beta.6/en/05-journal.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 255212,
+      "sha256": "4b2135bc174866a169b839d1b4f106f65ad1c438af5dff74bb8e01d0e2116f6a"
+    },
+    {
+      "file": "1.0-beta.6/en/06-emotion-log.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 222521,
+      "sha256": "dd9f0c70b2fa7d55cccc56ab40709123feefa17754b9c5179879f52edce3c466"
+    },
+    {
+      "file": "1.0-beta.6/en/07-player.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 548775,
+      "sha256": "73ed1c2ec0f2003ed3eb98995e4740b3191c1eb0756f3de6b574d57169405204"
+    },
+    {
+      "file": "1.0-beta.6/en/feature-graphic.png",
+      "width": 1024,
+      "height": 500,
+      "bytes": 49382,
+      "sha256": "a32a8ad9a9195dd386fe9bf473719ea3bb76f2ca36fcda1829df3f1c3407c31f"
+    },
+    {
+      "file": "1.0-beta.6/hi/01-mental-sky.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 230207,
+      "sha256": "3dc598a0d16672a92590e99e67b430723112b09fc01671a568fc2ea2cc0d33cb"
+    },
+    {
+      "file": "1.0-beta.6/hi/02-feelings.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 216273,
+      "sha256": "92d93c92e7b61cbeea8389d9ab92f3c88e1a9c9690de17187765a357992404a1"
+    },
+    {
+      "file": "1.0-beta.6/hi/03-exercises.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 441289,
+      "sha256": "e53194a580a1dd6ca8249eca6aeff97122807cf93dc34928d861f4471a78906c"
+    },
+    {
+      "file": "1.0-beta.6/hi/04-exercise-cards.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 389699,
+      "sha256": "b57ed65a20f18e154192ea7280cc84e914da6a8167c8a15ba48e4cb3beb560d7"
+    },
+    {
+      "file": "1.0-beta.6/hi/05-journal.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 237968,
+      "sha256": "37af27ab3fd298f67782f86c408463a9e3113cc5884449aca7d3bcc2ca628650"
+    },
+    {
+      "file": "1.0-beta.6/hi/06-emotion-log.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 221079,
+      "sha256": "77512b86b5ecfc91f1b4964886d7d29d1b606313c2169746398aa2b26a72439b"
+    },
+    {
+      "file": "1.0-beta.6/hi/07-player.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 546755,
+      "sha256": "867c6b3e999aabb1e2e7a46694c8793c7ae5df946565f4fa4b1fe26a7256197a"
+    },
+    {
+      "file": "1.0-beta.6/hi/feature-graphic.png",
+      "width": 1024,
+      "height": 500,
+      "bytes": 47151,
+      "sha256": "a9200040a4546fa25b97764d72501f9429b3813cadb9fafb1e56adb7b8312ec1"
+    }
+  ]
+}

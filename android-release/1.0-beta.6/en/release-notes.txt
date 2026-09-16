@@ -1,0 +1,3 @@
+• Optional encrypted server backup is now available.
+• More reliable sessions across app restarts.
+• Clear onboarding, real exercise cards and more language choices.
