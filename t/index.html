@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>A theme for Emotica</title>
+<meta name="description" content="Someone made you a theme for Emotica." />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Emotica" />
+<meta property="og:title" content="A theme for Emotica" />
+<meta property="og:description" content="Someone made you a theme for Emotica." />
+<meta property="og:image" content="https://emotica.me/assets/share_image.png" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="icon" type="image/png" href="/assets/app_icon_transparent@2x.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Lexend', system-ui, -apple-system, sans-serif;
+    background: radial-gradient(circle at 50% 0%, #2a1f5e 0%, #1F174A 55%, #140f33 100%);
+    color: #fff; min-height: 100vh;
+    display: flex; align-items: center; justify-content: center; padding: 24px;
+  }
+  .card {
+    width: 100%; max-width: 440px; text-align: center;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 28px; padding: 28px; backdrop-filter: blur(8px);
+  }
+  .logo { height: 56px; margin: 0 auto 18px; display: block; }
+  .badge {
+    display: none; font-size: 12px; font-weight: 600; letter-spacing: .04em;
+    text-transform: uppercase; color: #C4B5FD;
+    background: rgba(124,58,237,0.18); border: 1px solid rgba(124,58,237,0.35);
+    padding: 4px 12px; border-radius: 999px; margin-bottom: 14px;
+  }
+  h1 { font-size: 26px; font-weight: 700; line-height: 1.2; margin-bottom: 10px; }
+  p.desc { font-size: 15px; line-height: 1.5; color: rgba(255,255,255,0.75); margin-bottom: 18px; }
+
+  /* The preview plate. Fixed white, exactly like the one in the app, so a dark
+     theme shown inside a dark page still has a boundary. */
+  #plate {
+    display: none; background: #fff; border-radius: 26px; padding: 10px;
+    margin: 0 auto 20px; box-shadow: 0 10px 30px rgba(0,0,0,.28);
+  }
+  #canvas { border-radius: 20px; padding: 16px; text-align: left; }
+  #canvasLabel { font-size: 15px; font-weight: 600; margin-bottom: 12px; }
+  #cardBox { border-radius: 16px; padding: 14px; }
+  #cardTitle { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  #cardBody { font-size: 12px; line-height: 1.4; margin-bottom: 10px; }
+  .chips { display: flex; gap: 8px; align-items: center; }
+  #cta { font-size: 12px; font-weight: 600; padding: 6px 12px; border-radius: 999px; }
+  #discuss { font-size: 11px; font-weight: 600; padding: 5px 10px; border-radius: 8px; }
+
+  a.btn {
+    display: block; text-decoration: none; font-weight: 600; font-size: 16px;
+    padding: 15px; border-radius: 16px; margin-bottom: 12px; transition: opacity .15s;
+  }
+  a.btn:active { opacity: .85; }
+  a.primary { background: #7C3AED; color: #fff; }
+  a.store { background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(255,255,255,0.14); }
+  .foot { margin-top: 8px; font-size: 12px; color: rgba(255,255,255,0.4); }
+</style>
+</head>
+<body>
+  <main class="card">
+    <img class="logo" src="/assets/logoDarkMode@2x.webp" alt="Emotica" />
+    <span id="badge" class="badge"></span>
+    <h1 id="title">A theme for Emotica</h1>
+    <p class="desc" id="desc">Someone made you a theme. Open it in Emotica to try it on.</p>
+
+    <div id="plate">
+      <div id="canvas">
+        <div id="canvasLabel">Your sky</div>
+        <div id="cardBox">
+          <div id="cardTitle">A calm moment</div>
+          <div id="cardBody">This is how a card reads on this canvas.</div>
+          <div class="chips">
+            <span id="cta">Begin</span>
+            <span id="discuss">Discuss</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <a class="btn primary" id="openApp" href="emotica://theme">Open in Emotica</a>
+    <a class="btn store" href="https://apps.apple.com/us/app/emotica-your-emotions/id6757162931">Download Emotica</a>
+    <p class="foot">Emotional intelligence, journaling &amp; AI coaching</p>
+  </main>
+
+<script>
+(function () {
+  var p = new URLSearchParams(location.search);
+
+  // Mirrors `Color(hex:)` in the app: strip a leading #, then accept 6 or 8 hex
+  // digits and nothing else. Matching it matters — a link this page renders but
+  // the app refuses (or the reverse) is worse than one that fails on both.
+  function hex(key) {
+    var raw = (p.get(key) || '').trim().replace(/^#/, '');
+    if (!/^[0-9a-fA-F]{6}$/.test(raw) && !/^[0-9a-fA-F]{8}$/.test(raw)) return null;
+    return '#' + raw.slice(0, 6).toUpperCase();
+  }
+
+  var canvas = hex('c'), card = hex('k'), tint = hex('t');
+  var second = hex('s') || tint;
+  // Same three required fields as `fromShareQuery`, and the same all-or-nothing
+  // rule: a half-valid link shows the generic page rather than a broken preview.
+  if (!canvas || !card || !tint) return;
+
+  // textContent everywhere below, never innerHTML. The name arrives from a URL a
+  // stranger controls, and 40 characters is the cap the app enforces too.
+  var name = (p.get('n') || '').trim().slice(0, 40) || 'Shared theme';
+
+  document.title = name + ' · Emotica';
+  document.getElementById('title').textContent = name;
+  document.getElementById('desc').textContent =
+    'Someone made you this theme. Open it in Emotica to try it on.';
+  var b = document.getElementById('badge');
+  b.textContent = 'Theme';
+  b.style.display = 'inline-block';
+
+  // Relative luminance, the same WCAG formula the app uses, so this page reaches
+  // the same black-or-white answer for every surface it paints.
+  function lum(h) {
+    var n = parseInt(h.slice(1), 16);
+    var c = [(n >> 16) & 255, (n >> 8) & 255, n & 255].map(function (v) {
+      v /= 255;
+      return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+    });
+    return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+  }
+  function ratio(a, b2) {
+    var l1 = lum(a), l2 = lum(b2);
+    return (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);
+  }
+  var INK = '#1F174A';
+  function ink(on) { return ratio(on, INK) >= ratio(on, '#FFFFFF') ? INK : '#FFFFFF'; }
+
+  var cv = document.getElementById('canvas');
+  cv.style.background = canvas;
+  document.getElementById('canvasLabel').style.color = ink(canvas);
+
+  var box = document.getElementById('cardBox');
+  box.style.background = card;
+  box.style.border = '1px solid ' + (ink(card) === INK ? 'rgba(0,0,0,.14)' : 'rgba(255,255,255,.14)');
+  document.getElementById('cardTitle').style.color = ink(card);
+  var body = document.getElementById('cardBody');
+  body.style.color = ink(card);
+  body.style.opacity = '.65';
+
+  var cta = document.getElementById('cta');
+  cta.style.background = tint;
+  cta.style.color = ratio(tint, '#FFFFFF') >= 3 ? '#FFFFFF' : INK;
+  var dis = document.getElementById('discuss');
+  dis.style.background = second;
+  dis.style.color = ratio(second, '#FFFFFF') >= 3 ? '#FFFFFF' : INK;
+
+  document.getElementById('plate').style.display = 'block';
+
+  // Rebuilt from the VALIDATED values rather than passed through, so nothing from
+  // the original query can reach the URL scheme unchecked.
+  var q = new URLSearchParams();
+  q.set('n', name);
+  q.set('c', canvas.slice(1));
+  q.set('k', card.slice(1));
+  q.set('t', tint.slice(1));
+  q.set('s', second.slice(1));
+  document.getElementById('openApp').href = 'emotica://theme?' + q.toString();
+})();
+</script>
+</body>
+</html>
