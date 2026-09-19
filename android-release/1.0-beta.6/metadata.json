@@ -1,0 +1,202 @@
+{
+  "en": {
+    "title": "Emotica: Mood & Journal",
+    "shortDescription": "Log feelings, see your Mental Sky, and find exercises for your mood.",
+    "fullDescription": "Make room for how you feel.\n\nEmotica brings mood tracking, a personal journal and calming exercises into one place. Start with a feeling, add its intensity, and see it become a cloud in your Mental Sky.\n\nLOG A FEELING\nChoose from feelings such as happy, calm, anxious or tired. Add thoughts and what brought the feeling on, or keep your check-in short.\n\nSEE YOUR MENTAL SKY\nYour logged feelings appear as clouds. Tap a cloud to revisit an entry, move it into history, and return to it later.\n\nFIND AN EXERCISE\nGet suggestions informed by your recent feelings. Explore guided meditations, sleep sounds, stories and other exercises, or choose something yourself. Round cards are sounds; rectangular cards open guided exercises and other audio content.\n\nKEEP A JOURNAL\nWrite down thoughts in your own words. Keep your journal encrypted on your device, and use export and import to manage your backups. No account is needed to start.\n\nMAKE IT YOURS\nChoose a theme, adjust the look of your cards, and decide whether to enable daily reminders. Notifications are optional.\n\nSTART IN YOUR LANGUAGE\nThe interface is available in English, Hindi, Bengali, Marathi, Telugu, Tamil, Gujarati, Urdu, Kannada, Odia, Malayalam, Punjabi, Spanish, Russian, German, Simplified Chinese and Traditional Chinese. Exercise titles and spoken audio may use a different language.\n\nSome features require Emotica Pro.\n\nLearn more: https://emotica.me",
+    "releaseNotes": "• Corrected remaining English labels in German, Hindi and Punjabi\n• Improved translated intensity controls, settings and backup messages\n• Includes the latest onboarding, feedback and Emotica Pro improvements",
+    "headings": [
+      [
+        "A sky of",
+        "feelings."
+      ],
+      [
+        "Name your",
+        "feeling."
+      ],
+      [
+        "Find your",
+        "pause."
+      ],
+      [
+        "Sounds or",
+        "guidance."
+      ],
+      [
+        "Your words,",
+        "your space."
+      ],
+      [
+        "How do you",
+        "feel?"
+      ],
+      [
+        "Listen.",
+        "Unwind."
+      ]
+    ],
+    "featureHeading": [
+      "Room for every",
+      "feeling."
+    ],
+    "altText": {
+      "feature-graphic.png": "Emotica app icon and Room for every feeling. Five filled pastel clouds with emotion symbols, labels and three dots.",
+      "01-mental-sky.png": "Logged feelings appear as clouds in the Mental Sky.",
+      "02-feelings.png": "Choose a feeling and how strongly you feel it.",
+      "03-exercises.png": "Browse exercises and suggestions based on recent feelings.",
+      "04-exercise-cards.png": "Round sound cards and rectangular guided-exercise cards in the introduction.",
+      "05-journal.png": "Write a personal journal entry with a title and your thoughts.",
+      "06-emotion-log.png": "Choose feelings from illustrated categories in the full emotion log.",
+      "07-player.png": "Exercise player with artwork, audio controls and a sleep timer."
+    }
+  },
+  "hi": {
+    "title": "Emotica: मन की डायरी",
+    "shortDescription": "अपनी भावनाएँ लिखें, मन का आसमान देखें और मन के मुताबिक अभ्यास पाएँ।",
+    "fullDescription": "मन की बात के लिए थोड़ी जगह।\n\nEmotica में अपनी भावनाएँ लिखें, डायरी रखें और सुकून देने वाले अभ्यास खोजें। एक भावना चुनें, बताएँ कि वह कितनी गहरी है और उसे अपने मन के आसमान में बादल बनते देखें।\n\nआज कैसा लग रहा है?\nखुशी, शांति, चिंता या थकान जैसी भावनाओं में से चुनें। चाहें तो अपने विचार और भावना की वजह भी लिखें। कम लिखना भी ठीक है।\n\nमन का आसमान देखें\nआपकी लिखी भावनाएँ बादलों में दिखती हैं। किसी बादल पर टैप करके अपनी बात फिर पढ़ें। उसे इतिहास में रखें और जब चाहें वापस देखें।\n\nमन के मुताबिक अभ्यास\nआपकी हाल की भावनाओं के आधार पर अभ्यास सुझाए जाते हैं। ध्यान, नींद के लिए आवाज़ें, कहानियाँ और दूसरे अभ्यास देखें। आप अपनी पसंद से भी चुन सकते हैं। गोल कार्ड में आवाज़ें हैं। आयताकार कार्ड में निर्देश वाले अभ्यास और दूसरी ऑडियो सामग्री है।\n\nअपनी डायरी रखें\nअपने शब्दों में मन की बात लिखें। डायरी आपके फ़ोन पर एन्क्रिप्टेड रहती है। बैकअप के लिए एक्सपोर्ट और इम्पोर्ट का इस्तेमाल करें। शुरू करने के लिए खाता ज़रूरी नहीं है।\n\nअपनी पसंद से इस्तेमाल करें\nथीम और कार्ड का रूप चुनें। रोज़ याद दिलाने वाले नोटिफ़िकेशन चालू करें या उन्हें बंद रहने दें।\n\nअपनी भाषा में शुरुआत करें\nऐप का इंटरफ़ेस हिन्दी, अंग्रेज़ी, बंगाली, मराठी, तेलुगु, तमिल, गुजराती, उर्दू, कन्नड़, ओड़िया, मलयालम, पंजाबी, स्पेनिश, रूसी, जर्मन और दोनों चीनी लिपियों में उपलब्ध है। अभ्यासों के नाम और ऑडियो की भाषा अलग हो सकती है।\n\nकुछ फ़ीचर के लिए Emotica Pro ज़रूरी है।\n\nऔर जानें: https://emotica.me",
+    "releaseNotes": "• जर्मन, हिन्दी और पंजाबी में बचे हुए अंग्रेज़ी शब्दों का अनुवाद किया\n• तीव्रता, सेटिंग्स और बैकअप के संदेश बेहतर किए\n• नए परिचय, फ़ीडबैक और Emotica Pro के सुधार शामिल हैं",
+    "headings": [
+      [
+        "मन का",
+        "आसमान।"
+      ],
+      [
+        "अपनी भावना",
+        "चुनें।"
+      ],
+      [
+        "थोड़ा",
+        "ठहरें।"
+      ],
+      [
+        "आवाज़ें और",
+        "अभ्यास।"
+      ],
+      [
+        "मन की बात",
+        "लिखें।"
+      ],
+      [
+        "कैसा",
+        "लग रहा है?"
+      ],
+      [
+        "सुनें और",
+        "सुकून पाएँ।"
+      ]
+    ],
+    "featureHeading": [
+      "मन की बात को",
+      "जगह दें।"
+    ],
+    "altText": {
+      "feature-graphic.png": "Emotica का आइकन और मन की बात को जगह दें। पाँच रंगीन बादलों में भावनाओं के चिह्न, नाम और तीन बिंदु।",
+      "01-mental-sky.png": "मन के आसमान में लिखी हुई भावनाओं के बादल।",
+      "02-feelings.png": "अपनी भावना और उसकी गहराई चुनें।",
+      "03-exercises.png": "हाल की भावनाओं के आधार पर सुझाए गए अभ्यास देखें।",
+      "04-exercise-cards.png": "परिचय में आवाज़ों के गोल कार्ड और निर्देश वाले अभ्यासों के आयताकार कार्ड।",
+      "05-journal.png": "अपनी डायरी में शीर्षक और मन की बात लिखें।",
+      "06-emotion-log.png": "भावनाओं वाले चित्रों और श्रेणियों से अपनी भावनाएँ चुनें।",
+      "07-player.png": "अभ्यास प्लेयर में चित्र, ऑडियो नियंत्रण और स्लीप टाइमर।"
+    }
+  },
+  "de": {
+    "title": "Emotica: Gefühle & Tagebuch",
+    "shortDescription": "Halte Gefühle fest, führe Tagebuch und finde Übungen für deine Stimmung.",
+    "fullDescription": "Gib deinen Gefühlen Raum.\n\nEmotica verbindet Stimmungstagebuch, persönliche Notizen und beruhigende Übungen. Wähle ein Gefühl, gib seine Stärke an und sieh, wie es als Wolke in deinem Gefühlshimmel erscheint.\n\nGEFÜHLE FESTHALTEN\nFröhlich, ruhig, besorgt oder müde? Wähle, was zu dir passt. Ergänze Gedanken und Auslöser oder halte deinen Eintrag kurz.\n\nDEIN GEFÜHLSHIMMEL\nDeine Gefühle erscheinen als Wolken. Tippe auf eine Wolke, um einen Eintrag erneut zu lesen. Verschiebe ihn in den Verlauf und kehre später zu ihm zurück.\n\nEINE PASSENDE ÜBUNG FINDEN\nDeine zuletzt erfassten Gefühle helfen dabei, Übungen vorzuschlagen. Entdecke geführte Meditationen, Einschlafklänge, Geschichten und weitere Übungen. Du kannst auch selbst wählen. Runde Karten stehen für Klänge, rechteckige Karten für geführte Übungen und andere Audioinhalte.\n\nTAGEBUCH FÜHREN\nSchreibe deine Gedanken in deinen eigenen Worten auf. Dein Tagebuch wird auf deinem Gerät verschlüsselt gespeichert. Mit Export und Import verwaltest du deine Sicherungen. Zum Start brauchst du kein Konto.\n\nDEINE EINSTELLUNGEN\nWähle ein Design und das Aussehen deiner Karten. Tägliche Erinnerungen sind optional.\n\nIN DEINER SPRACHE STARTEN\nDie Benutzeroberfläche ist auf Deutsch, Russisch, Englisch, Hindi, Bengali, Marathi, Telugu, Tamil, Gujarati, Urdu, Kannada, Odia, Malayalam, Punjabi, Spanisch sowie in vereinfachtem und traditionellem Chinesisch verfügbar. Übungstitel und Audioinhalte können in einer anderen Sprache sein.\n\nEinige Funktionen erfordern Emotica Pro.\n\nMehr erfahren: https://emotica.me",
+    "releaseNotes": "• Verbliebene englische Texte auf Deutsch, Hindi und Punjabi übersetzt\n• Verbesserte Beschriftungen für Intensität, Einstellungen und Backups\n• Mit den neuesten Verbesserungen für Einführung, Feedback und Emotica Pro",
+    "headings": [
+      [
+        "Ein Himmel",
+        "voll Gefühle."
+      ],
+      [
+        "Gib deinem",
+        "Gefühl Raum."
+      ],
+      [
+        "Finde deine",
+        "Pause."
+      ],
+      [
+        "Klänge oder",
+        "Anleitung."
+      ],
+      [
+        "Deine Worte.",
+        "Dein Raum."
+      ],
+      [
+        "Wie fühlst",
+        "du dich?"
+      ],
+      [
+        "Hör zu.",
+        "Lass los."
+      ]
+    ],
+    "featureHeading": [
+      "Platz für jedes",
+      "Gefühl."
+    ],
+    "altText": {
+      "feature-graphic.png": "Emotica-App-Symbol und Platz für jedes Gefühl. Fünf gefüllte pastellfarbene Wolken mit Gefühlen und Symbolen.",
+      "01-mental-sky.png": "Gespeicherte Gefühle erscheinen als Wolken im Gefühlshimmel.",
+      "02-feelings.png": "Wähle ein Gefühl und gib an, wie stark es ist.",
+      "03-exercises.png": "Übungen und Vorschläge passend zu deinen zuletzt erfassten Gefühlen.",
+      "04-exercise-cards.png": "Die Einführung erklärt runde Klangkarten und rechteckige Karten für geführte Übungen.",
+      "05-journal.png": "Ein persönlicher Tagebucheintrag mit Titel und Gedanken.",
+      "06-emotion-log.png": "Wähle Gefühle aus den illustrierten Kategorien.",
+      "07-player.png": "Audioplayer mit Cover, Wiedergabesteuerung und Einschlaf-Timer."
+    }
+  },
+  "ru": {
+    "title": "Emotica: Дневник настроения",
+    "shortDescription": "Записывай чувства, веди дневник и находи практики под своё настроение.",
+    "fullDescription": "Дай своим чувствам место.\n\nEmotica объединяет дневник настроения, личные записи и практики для расслабления. Выбери чувство, отметь его силу и посмотри, как оно станет облаком на твоём небе чувств.\n\nЗАПИСЫВАЙ ЧУВСТВА\nРадость, спокойствие, тревога или усталость — выбери то, что чувствуешь. Добавь мысли и причины или оставь короткую запись.\n\nТВОЁ НЕБО ЧУВСТВ\nЗаписанные чувства появляются в виде облаков. Нажми на облако, чтобы перечитать запись. Перенеси её в историю и возвращайся к ней позже.\n\nНАЙДИ СВОЮ ПРАКТИКУ\nНедавно записанные чувства помогают нам предлагать подходящие практики. Здесь есть медитации с голосовым сопровождением, звуки для сна, истории и другие упражнения. Можно выбрать что-то самостоятельно. Круглые карточки — звуки, прямоугольные — практики с сопровождением и другие аудиоматериалы.\n\nВЕДИ ДНЕВНИК\nЗаписывай мысли своими словами. Дневник хранится на устройстве в зашифрованном виде. Экспорт и импорт помогают управлять резервными копиями. Для начала не нужно создавать аккаунт.\n\nНАСТРОЙ ПОД СЕБЯ\nВыбери тему и вид карточек. Ежедневные напоминания можно включить по желанию.\n\nНАЧНИ НА СВОЁМ ЯЗЫКЕ\nИнтерфейс доступен на русском, немецком, английском, хинди, бенгальском, маратхи, телугу, тамильском, гуджарати, урду, каннада, одия, малаялам, панджаби, испанском, а также на упрощённом и традиционном китайском. Названия практик и аудиоматериалы могут быть на другом языке.\n\nДля некоторых функций нужен Emotica Pro.\n\nПодробнее: https://emotica.me",
+    "releaseNotes": "• Переведены оставшиеся английские подписи на немецкий, хинди и панджаби\n• Улучшены переводы настроек, интенсивности чувств и резервного копирования\n• Включены последние улучшения знакомства с приложением, отзывов и Emotica Pro",
+    "headings": [
+      [
+        "Небо",
+        "твоих чувств."
+      ],
+      [
+        "Назови",
+        "своё чувство."
+      ],
+      [
+        "Время",
+        "для паузы."
+      ],
+      [
+        "Звуки и",
+        "практики."
+      ],
+      [
+        "Твои слова.",
+        "Твой дневник."
+      ],
+      [
+        "Что ты",
+        "чувствуешь?"
+      ],
+      [
+        "Слушай.",
+        "Отдыхай."
+      ]
+    ],
+    "featureHeading": [
+      "Место для",
+      "твоих чувств."
+    ],
+    "altText": {
+      "feature-graphic.png": "Значок Emotica и Место для твоих чувств. Пять пастельных облаков с названиями и символами чувств.",
+      "01-mental-sky.png": "Записанные чувства в виде облаков на небе чувств.",
+      "02-feelings.png": "Выбери чувство и отметь, насколько оно сильное.",
+      "03-exercises.png": "Практики и рекомендации с учётом недавно записанных чувств.",
+      "04-exercise-cards.png": "Вводный экран объясняет круглые карточки звуков и прямоугольные карточки практик.",
+      "05-journal.png": "Личная запись в дневнике с заголовком и мыслями.",
+      "06-emotion-log.png": "Выбор чувств из категорий с иллюстрациями.",
+      "07-player.png": "Аудиоплеер с обложкой, управлением воспроизведением и таймером сна."
+    }
+  }
+}

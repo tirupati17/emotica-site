@@ -1,0 +1,18 @@
+# humanstxt.org
+
+/* TEAM */
+Creator: Tirupati Balan & Ida
+Site: https://emotica.me
+Location: India & Russia
+
+/* SITE */
+Last update: 2026/01/14
+Language: English
+Doctype: HTML5
+IDE: Xcode, VS Code
+Standards: HTML5, CSS3, ES6+, Swift
+Components: React, Vite, TailwindCSS
+Framework: SwiftUI (iOS), React (Web)
+
+/* THANKS */
+Thanks to all our beta testers for their valuable feedback.
