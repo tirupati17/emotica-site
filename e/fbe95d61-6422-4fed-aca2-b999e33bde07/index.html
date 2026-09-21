@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Healing Night · Emotica</title>
+<meta name="description" content="Peaceful, sleepy vibes for relaxed night rest." />
+
+<!-- Static Open Graph (GitHub Pages can't render per-exercise OG; the human-facing
+     redirect + preview below is filled in client-side from Supabase). -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://emotica.me/e/fbe95d61-6422-4fed-aca2-b999e33bde07/" />
+<meta property="og:site_name" content="Emotica" />
+<meta property="og:title" content="Healing Night" />
+<meta property="og:description" content="Peaceful, sleepy vibes for relaxed night rest." />
+<meta property="og:image" content="https://emotica.me/assets/share_image.png" />
+<meta property="og:image:width" content="1280" />
+<meta property="og:image:height" content="720" />
+<meta name="twitter:image" content="https://emotica.me/assets/share_image.png" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="icon" type="image/png" href="/assets/app_icon_transparent@2x.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Lexend', system-ui, -apple-system, sans-serif;
+    background: radial-gradient(circle at 50% 0%, #2a1f5e 0%, #1F174A 55%, #140f33 100%);
+    color: #fff; min-height: 100vh;
+    display: flex; align-items: center; justify-content: center; padding: 24px;
+  }
+  /* Blurred thumbnail fills the page behind the card. Overscanned so the blur's
+     soft edges never show; scrim keeps the card + text legible. */
+  .bg {
+    position: fixed; inset: -60px; z-index: 0;
+    background-size: cover; background-position: center;
+    filter: blur(40px) saturate(1.25) brightness(0.95);
+    transform: scale(1.2);
+    opacity: 0; transition: opacity .7s ease;
+  }
+  .bg.on { opacity: 1; }
+  /* Light vignette so the blurred scene stays visible while the card + text read. */
+  .scrim {
+    position: fixed; inset: 0; z-index: 1;
+    background:
+      radial-gradient(circle at 50% 42%, rgba(15,10,40,0.05) 0%, rgba(15,10,40,0.5) 95%),
+      rgba(15,10,40,0.12);
+  }
+  .card { position: relative; z-index: 2; }
+  .card {
+    width: 100%; max-width: 440px; text-align: center;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 28px; padding: 28px; backdrop-filter: blur(8px);
+  }
+  .logo { height: 56px; margin: 0 auto 20px; display: block; }
+  .thumb {
+    width: 100%; aspect-ratio: 16/9; object-fit: cover;
+    border-radius: 18px; margin-bottom: 20px; background: #2a2358; display: none;
+  }
+  .badge {
+    display: none; font-size: 12px; font-weight: 600; letter-spacing: .04em;
+    text-transform: uppercase; color: #C4B5FD;
+    background: rgba(124,58,237,0.18); border: 1px solid rgba(124,58,237,0.35);
+    padding: 4px 12px; border-radius: 999px; margin-bottom: 14px;
+  }
+  h1 { font-size: 26px; font-weight: 700; line-height: 1.2; margin-bottom: 10px; }
+  p.desc { font-size: 15px; line-height: 1.5; color: rgba(255,255,255,0.72); margin-bottom: 6px; }
+  p.meta { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 24px; min-height: 8px; }
+  a.btn {
+    display: block; text-decoration: none; font-weight: 600; font-size: 16px;
+    padding: 15px; border-radius: 16px; margin-bottom: 12px; transition: opacity .15s;
+  }
+  a.btn:active { opacity: .85; }
+  a.primary { background: #7C3AED; color: #fff; }
+  a.store { background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(255,255,255,0.14); }
+  .foot { margin-top: 8px; font-size: 12px; color: rgba(255,255,255,0.4); }
+  /* In-browser player */
+  button.play {
+    display: none; align-items: center; justify-content: center; gap: 10px;
+    width: 100%; border: none; cursor: pointer; font-family: inherit;
+    font-weight: 600; font-size: 16px; color: #fff; background: #7C3AED;
+    padding: 15px; border-radius: 16px; margin-bottom: 12px; transition: opacity .15s;
+  }
+  button.play:active { opacity: .85; }
+  button.play svg { width: 20px; height: 20px; }
+  .progress {
+    display: none; height: 5px; border-radius: 999px; background: rgba(255,255,255,0.14);
+    margin: 0 0 18px; overflow: hidden;
+  }
+  .progress > i { display: block; height: 100%; width: 0; background: #A78BFA; border-radius: 999px; }
+</style>
+</head>
+<body>
+  <div class="bg" id="bg"></div>
+  <div class="scrim"></div>
+  <main class="card">
+    <img class="logo" src="/assets/logoDarkMode@2x.webp" alt="Emotica" />
+    <img id="thumb" class="thumb" alt="" />
+    <span id="badge" class="badge"></span>
+    <h1 id="title">Emotica</h1>
+    <p class="desc" id="desc">Understand your emotions with Emotica.</p>
+    <p class="meta" id="meta"></p>
+
+    <button class="play" id="playBtn" aria-label="Play">
+      <svg id="playIcon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      <span id="playLabel">Play it now</span>
+    </button>
+    <div class="progress" id="progress"><i id="progressBar"></i></div>
+    <audio id="audio" preload="none" playsinline></audio>
+
+    <a class="btn primary" id="openApp" href="#">Open in Emotica</a>
+    <a class="btn store" href="https://apps.apple.com/us/app/emotica-your-emotions/id6757162931">Download Emotica</a>
+    <p class="foot">Emotional intelligence, journaling &amp; AI coaching</p>
+  </main>
+
+<script>
+(function () {
+  var SUPABASE_URL = 'https://klrpavxhdlpltevmqwlz.supabase.co';
+  var SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtscnBhdnhoZGxwbHRldm1xd2x6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjgyODg5MzAsImV4cCI6MjA4Mzg2NDkzMH0.4O-CiJuqVmJtdZjOSwb3GyG7qbooliUSjHxfFXu9poE';
+  var APP_STORE = 'https://apps.apple.com/us/app/emotica-your-emotions/id6757162931';
+  var LABEL = { meditation: 'Meditation', affirmation: 'Affirmation', sleep_sound: 'Sleep Sound' };
+
+  // id from ?id= (query form) or a trailing /e/<id> path, whichever is present.
+  var params = new URLSearchParams(location.search);
+  var id = params.get('id') || '';
+  if (!id) {
+    var m = location.pathname.match(/\/e\/([^/?#]+)/);
+    if (m) id = m[1];
+  }
+  var isUuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id);
+  var appUrl = isUuid ? 'emotica://exercise?id=' + id : 'emotica://exercise';
+  document.getElementById('openApp').href = appUrl;
+
+  var audio = document.getElementById('audio');
+  var playBtn = document.getElementById('playBtn');
+  var playIcon = document.getElementById('playIcon');
+  var playLabel = document.getElementById('playLabel');
+  var progress = document.getElementById('progress');
+  var progressBar = document.getElementById('progressBar');
+  var PLAY = 'M8 5v14l11-7z';
+  var PAUSE = 'M6 5h4v14H6zM14 5h4v14h-4z';
+
+  function fmt(sec) {
+    if (!sec || sec <= 0) return '';
+    var mnt = Math.round(sec / 60);
+    return mnt >= 60 ? (Math.floor(mnt / 60) + 'h ' + (mnt % 60) + 'm') : (mnt + ' min');
+  }
+
+  // Fill in the preview from Supabase (best-effort; the buttons work regardless).
+  if (isUuid) {
+    fetch(SUPABASE_URL + '/rest/v1/exercises?id=eq.' + id +
+          '&is_published=eq.true&select=title,description,thumbnail_url,category,duration_seconds,audio_url',
+          { headers: { apikey: SUPABASE_ANON, Authorization: 'Bearer ' + SUPABASE_ANON } })
+      .then(function (r) { return r.ok ? r.json() : []; })
+      .then(function (rows) {
+        var ex = rows && rows[0];
+        if (!ex) return;
+        document.title = ex.title + ' · Emotica';
+        document.getElementById('title').textContent = ex.title;
+        if (ex.description) document.getElementById('desc').textContent = ex.description;
+        var b = document.getElementById('badge');
+        b.textContent = LABEL[ex.category] || 'Exercise'; b.style.display = 'inline-block';
+        var d = fmt(ex.duration_seconds); if (d) document.getElementById('meta').textContent = d;
+        if (ex.thumbnail_url) {
+          var t = document.getElementById('thumb');
+          t.src = ex.thumbnail_url; t.style.display = 'block';
+          t.onerror = function () { t.style.display = 'none'; };
+          // Same image, blurred, as the full-page backdrop.
+          var bg = document.getElementById('bg');
+          bg.style.backgroundImage = 'url("' + ex.thumbnail_url + '")';
+          bg.classList.add('on');
+        }
+        // In-browser playback — let the recipient listen right from the link.
+        if (ex.audio_url) {
+          audio.src = ex.audio_url;
+          playBtn.style.display = 'flex';
+        }
+      })
+      .catch(function () {});
+  }
+
+  // In-browser player controls — tap to play/pause; no auto-redirect so playback
+  // isn't interrupted. "Open in Emotica" / "Get the app" stay as explicit choices.
+  function setPlaying(on) {
+    playIcon.setAttribute('d', on ? PAUSE : PLAY);
+    playLabel.textContent = on ? 'Pause' : 'Play';
+    progress.style.display = on || audio.currentTime > 0 ? 'block' : 'none';
+  }
+  playBtn.addEventListener('click', function () {
+    if (audio.paused) { audio.play().catch(function () {}); }
+    else { audio.pause(); }
+  });
+  audio.addEventListener('play', function () { setPlaying(true); });
+  audio.addEventListener('pause', function () { setPlaying(false); });
+  audio.addEventListener('ended', function () { setPlaying(false); progressBar.style.width = '0'; });
+  audio.addEventListener('timeupdate', function () {
+    if (audio.duration) progressBar.style.width = (audio.currentTime / audio.duration * 100) + '%';
+  });
+})();
+</script>
+</body>
+</html>
