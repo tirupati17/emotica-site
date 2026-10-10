@@ -1,0 +1,19 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["495XWEJ924.com.celerstudio.Emotica"],
+        "components": [
+          { "/": "/f/*", "comment": "Friends invite links open the app" },
+          { "/": "/f", "comment": "Friends invite (no trailing slash)" },
+          { "/": "/t/*", "comment": "Shared theme links open the app" },
+          { "/": "/t", "comment": "Shared theme (no trailing slash)" },
+          { "/": "/m/*", "comment": "Shared milestone links open the app" },
+          { "/": "/m", "comment": "Shared milestone (no trailing slash)" },
+          { "/": "/e/*", "comment": "Shared exercise links open the app" },
+          { "/": "/e", "comment": "Shared exercise (no trailing slash)" }
+        ]
+      }
+    ]
+  }
+}

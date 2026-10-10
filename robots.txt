@@ -1,0 +1,49 @@
+# Robots.txt for Emotica
+# https://emotica.me
+
+# Allow all crawlers including AI bots
+User-agent: *
+Allow: /
+# Private, unlisted pitch deck — keep it out of every index.
+Disallow: /deck
+
+# Explicitly allow AI crawlers for LLM SEO
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Anthropic-AI
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# Standard search engine bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# Sitemap location
+Sitemap: https://emotica.me/sitemap.xml
+
+# Crawl delay (be polite to servers)
+Crawl-delay: 1

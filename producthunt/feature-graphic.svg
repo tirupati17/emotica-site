@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1270" height="760" viewBox="0 0 1270 760" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="title desc">
+  <title id="title">Try Emotica — Say how you feel</title>
+  <desc id="desc">A calm dark feature graphic with filled emotion clouds.</desc>
+  <rect width="1270" height="760" rx="36" fill="#0d0a1d"/>
+  <circle cx="126" cy="96" r="210" fill="#17122f"/><circle cx="1138" cy="680" r="275" fill="#17122f"/>
+  <g font-family="Inter, ui-sans-serif, system-ui, -apple-system, sans-serif" text-anchor="middle">
+    <text x="635" y="78" fill="#c8c1ec" font-size="24" font-weight="800" letter-spacing="4">EMOTICA</text>
+    <text x="635" y="169" fill="#fff" font-size="62" font-weight="800">Say how you feel.</text>
+    <text x="635" y="238" fill="#ffad45" font-size="62" font-weight="800">Something starts playing.</text>
+    <text x="635" y="286" fill="#b7b0d0" font-size="22" font-weight="500">A private space to notice, understand, and respond.</text>
+  </g>
+  <!-- large filled cloud, echoing the Mental Sky emotion cards -->
+  <g transform="translate(90 370)">
+    <path d="M90 126C40 122 18 77 48 43 18 0 68-38 112-12 132-56 198-52 213-6 260-28 311 15 292 60 338 70 335 132 293 145 307 192 253 217 218 188 188 236 118 224 112 179 63 190 30 153 55 119Z" fill="#f6b3d4"/>
+    <g transform="translate(161 48)" stroke="#6c556c" stroke-width="4" fill="none"><circle r="15"/><path d="M0-26v-10M0 26v10M-26 0h-10M26 0h10M-18-18l-8-8M18 18l8 8M18-18l8-8M-18 18l-8 8"/></g>
+    <text x="161" y="137" fill="#49324d" font-size="34" font-weight="800">Joyful</text><circle cx="138" cy="166" r="6" fill="#a982a1"/><circle cx="161" cy="166" r="6" fill="#a982a1"/><circle cx="184" cy="166" r="6" fill="#a982a1"/>
+  </g>
+  <g transform="translate(435 430)">
+    <path d="M70 93C34 91 15 58 37 34 13 2 49-27 80-9 95-42 143-38 154-5 188-21 224 11 210 44 242 52 240 96 209 105 218 139 180 158 153 137 126 172 75 163 71 131 35 140 12 113 31 88Z" fill="#bfeeb9"/>
+    <text x="121" y="91" fill="#2b4a36" font-size="25" font-weight="800">Calm</text>
+  </g>
+  <g transform="translate(720 400)">
+    <path d="M82 107C38 103 20 64 45 35 20-3 65-37 103-14 121-54 182-50 196-8 239-29 284 11 267 53 309 62 306 119 267 131 279 174 229 197 197 171 170 213 109 202 104 162 62 172 33 140 56 104Z" fill="#b7dcf7"/>
+    <text x="157" y="111" fill="#29425c" font-size="29" font-weight="800">Hopeful</text>
+  </g>
+  <g transform="translate(1005 443)">
+    <path d="M67 86C32 83 17 53 37 30 17 1 50-24 80-7 94-37 137-34 147-4 178-18 209 10 197 40 227 47 225 88 197 96 205 127 171 145 147 126 123 157 78 149 75 120 43 128 22 104 42 81Z" fill="#d8c5f9"/>
+    <text x="119" y="87" fill="#473b68" font-size="23" font-weight="800">Peaceful</text>
+  </g>
+</svg>

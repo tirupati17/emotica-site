@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Emotica Android Chat Coach — parity and Gemini Nano plan</title>
+  <style>
+    :root{--ink:#211b45;--muted:#625b78;--line:#e9e5f1;--lav:#f7f4fb;--mint:#dcf7e9;--blue:#e8f1ff;--peach:#fff0df;--rose:#ffe7f0;--accent:#6d5ce7}
+    *{box-sizing:border-box} body{margin:0;color:var(--ink);font:16px/1.58 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;background:#fff}
+    main{max-width:1120px;margin:auto;padding:56px 28px 100px} h1{font-size:44px;line-height:1.05;letter-spacing:-.04em;margin:0 0 18px} h2{font-size:28px;line-height:1.15;margin:52px 0 14px;letter-spacing:-.025em} h3{font-size:19px;margin:28px 0 8px} p{max-width:890px} .lede{font-size:20px;color:var(--muted);max-width:850px}.meta{color:var(--muted);font-size:14px;border-bottom:1px solid var(--line);padding-bottom:22px}.callout{padding:18px 20px;border-radius:16px;background:var(--lav);border:1px solid var(--line);margin:22px 0}.callout strong{display:block;margin-bottom:4px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}.card{border:1px solid var(--line);border-radius:16px;padding:18px;background:#fff}.card.mint{background:var(--mint)}.card.blue{background:var(--blue)}.card.peach{background:var(--peach)}.card.rose{background:var(--rose)} table{border-collapse:collapse;width:100%;margin:16px 0 24px;font-size:14px}th,td{text-align:left;vertical-align:top;border-bottom:1px solid var(--line);padding:11px 10px}th{background:var(--lav);font-weight:700}code{background:#f1eef7;border-radius:5px;padding:2px 5px;font-size:.9em}pre{overflow:auto;background:#201c32;color:#f8f5ff;border-radius:12px;padding:16px;font-size:13px}li{margin:5px 0}.small{font-size:13px;color:var(--muted)}.phase{border-left:4px solid var(--accent);padding-left:18px;margin:28px 0}.pill{display:inline-block;padding:4px 9px;border-radius:99px;background:var(--lav);font-size:12px;font-weight:700;margin:2px}.warn{border-left-color:#e3a226}.ok{border-left-color:#25a66a}.diagram{border:1px solid var(--line);border-radius:16px;padding:18px;overflow:auto;background:#fff}
+    @media(max-width:700px){main{padding:32px 18px 70px}h1{font-size:34px}h2{font-size:25px}}
+  </style>
+  <script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs'; mermaid.initialize({startOnLoad:true,theme:'base',themeVariables:{primaryColor:'#f7f4fb',primaryTextColor:'#211b45',lineColor:'#8e83b6',secondaryColor:'#dcf7e9',tertiaryColor:'#e8f1ff'}});</script>
+</head>
+<body><main>
+  <h1>Android Chat Coach</h1>
+  <p class="lede">A pixel-faithful Android plan based on the current iOS implementation, with a deliberate split between fully local coaching through Gemini Nano and the richer Emotica server path.</p>
+  <p class="meta"><strong>Status:</strong> planning only — no code changed &nbsp;·&nbsp; <strong>Audience:</strong> Android, backend, product, privacy, analytics &nbsp;·&nbsp; <strong>Scope:</strong> text coach first; voice remains a later layer</p>
+
+  <div class="callout"><strong>Recommendation</strong>Port the behavior contract before porting the visual shell. Android should select a privacy route first, assemble a bounded context second, generate a structured response third, and render the same cards and controls as iOS. Gemini Nano must never silently become a cloud request after the user selects fully on-device mode.</div>
+
+  <h2>Audit rating and corrections</h2>
+  <div class="callout"><strong>Plan rating: 8.5/10 for architecture; 7/10 for ship readiness before this revision.</strong> The first draft correctly mapped the iOS pipeline and privacy routes, but it needed sharper Android decisions: the cloud provider key must never be a long-term Android client dependency, Gemini Nano structured output must be treated as capability-dependent, local retrieval should start deterministic before adding an embedding model, and the rollout must separate parity work from Nano experimentation.</div>
+  <table><thead><tr><th>Audit finding</th><th>Decision in this revision</th><th>Why it is safer/faster</th></tr></thead><tbody>
+    <tr><td>Android's current <code>GroqApiService</code> can call Groq directly with a build-time key.</td><td>Move production coach traffic behind the existing Emotica server proxy before adding new AI routes; keep no provider secret in an APK.</td><td>Prevents key extraction, gives one place for model fallback, policy, quotas and prompt versioning.</td></tr>
+    <tr><td>Gemini Nano support depends on AICore/device state.</td><td>Make Nano a typed capability with explicit unavailable/downloadable/ready/busy/quota/error states and a remote kill switch.</td><td>Prevents a device-specific failure from becoming a broken coach or an accidental cloud leak.</td></tr>
+    <tr><td>Local semantic embeddings would add model size and multilingual quality risk.</td><td>Start with deterministic local retrieval over emotion, trigger, recency and note tokens; add embeddings only after a measured quality need.</td><td>Ships sooner, works offline, is inspectable, and avoids another downloaded model.</td></tr>
+    <tr><td>One large parity port would mix UI, safety, server and Nano risk.</td><td>Ship four independently gated milestones: cloud parity, local safety/retrieval, Nano adapter, then actions/polish.</td><td>Each milestone is testable and reversible without changing the privacy promise.</td></tr>
+  </tbody></table>
+
+  <h2>1. Audit: what iOS actually does today</h2>
+  <p>The implementation is centered in <code>emotica-ios/Emotica/CoachChatView.swift</code> and supported by <code>OnDeviceLLMManager</code>, <code>OnDeviceRAGManager</code>, <code>OnDeviceToolRouter</code>, <code>CoachSafetyScanner</code>, <code>CoachPersonaStore</code>, <code>CoachQuotaManager</code>, SwiftData chat models, Supabase/MCP services, and Analytics feature flags.</p>
+  <div class="grid">
+    <div class="card mint"><h3>Conversation state</h3><p>SwiftData stores sessions and messages. A session has a title, insight context, timestamps and a summary/learned facts layer. The active on-device model session is reset when a conversation changes and reused across turns.</p></div>
+    <div class="card blue"><h3>Personal context</h3><p>Each send combines the latest entries, Mental Sky entries, local trend calculations, relevant semantic memories, profile/about-me, goals, response length, coaching style, language, recurring trigger focus and the selected persona.</p></div>
+    <div class="card peach"><h3>Privacy routing</h3><p><code>standard</code> uses local context plus the cloud coach. <code>enhanced</code> sends no journal context. <code>ondevice</code> uses local RAG and Foundation Models when available; unavailable devices use a separate hybrid fallback with an honest disclosure.</p></div>
+    <div class="card rose"><h3>Safety and quality</h3><p>Input is scanned locally. Crisis handling has a deterministic resource card and local fallback text. Cloud replies pass a quality gate. On-device replies are not sent to cloud for correction because that would violate the privacy choice.</p></div>
+  </div>
+
+  <h3>iOS request lifecycle</h3>
+  <div class="diagram"><div class="mermaid">
+flowchart TD
+  A[User sends message] --> B[Consume cloud quota only if cloud may be used]
+  B --> C[Persist user bubble]
+  C --> D[Local safety scan]
+  D --> E{Privacy mode}
+  E -->|enhanced| F[No journal context]
+  E -->|standard| G[Local semantic match + recent mood summary]
+  E -->|ondevice| H[Local RAG: embed query, cosine search, bounded context]
+  F --> I[Build system prompt]
+  G --> I
+  H --> I
+  I --> J{Nano/Foundation Models available?}
+  J -->|yes and ondevice| K[Persistent structured session + routed tools]
+  J -->|no and ondevice| L[Cloud response with explicit hybrid disclosure]
+  J -->|cloud mode| M[Groq → Gemini fallback, optional MCP reads]
+  K --> N[Validate structured fields]
+  L --> N
+  M --> N
+  N --> O[Parse actions, replies, impacts, discovery prompts]
+  O --> P[Render message + cards]
+  P --> Q[Persist assistant bubble, source and feedback]
+  </div></div>
+
+  <h3>What the iOS on-device session contains</h3>
+  <ul>
+    <li>A compact system prompt with style, strict language, user facts, current date, response length and recurring-focus guidance.</li>
+    <li>A persistent transcript for the current chat; the transcript is carried when the tool set changes.</li>
+    <li>Structured output: <code>message</code>, <code>quickReplies</code>, <code>discoveryQuestions</code> and <code>impactLabels</code>.</li>
+    <li>Tools selected by the user message: journal search, recent moods, emotional patterns, calendar event, reminder, notification, journal creation and journal update.</li>
+    <li>Context budgeting against a 4,096-token model window. Memories receive priority, recent moods fill remaining space, and every user-supplied prompt field is sanitized and capped.</li>
+  </ul>
+
+  <h2>2. Android audit and parity gap</h2>
+  <p>Android already has the right persistence foundation: Room <code>chat_sessions</code>/<code>chat_messages</code>, <code>ChatRepository</code>, a Compose <code>CoachScreen</code>, <code>CoachViewModel</code>, recent mood summaries, DataStore coaching style and Groq model configuration. It currently sends a plain cloud request through <code>GroqApiService.getCoachResponse()</code>.</p>
+  <table><thead><tr><th>Area</th><th>Android today</th><th>Parity work required</th></tr></thead><tbody>
+    <tr><td>UI</td><td>Compose chat, sessions, style picker, suggestions.</td><td>Match iOS bubble states, typing/glow, source/privacy disclosure, impact chips, discovery prompts, action cards, crisis card, favorites and feedback.</td></tr>
+    <tr><td>Context</td><td>Up to 12 recent moods, truncated notes.</td><td>Introduce a shared context assembler: recent moods, Mental Sky, local trend summary, semantic memories, profile, goals, language and persona.</td></tr>
+    <tr><td>Cloud</td><td>Groq request with a selective iOS-aligned prompt.</td><td>Use the same server contract, remote model config, retry/fallback, MCP read gate, action confirmation rules and response-quality validation.</td></tr>
+    <tr><td>On-device</td><td>No Gemini Nano route.</td><td>Add ML Kit GenAI Prompt API/AICore capability detection, model download state, warm-up, structured response parsing, quota/error handling and local-only fallback.</td></tr>
+    <tr><td>Personalisation</td><td>Coaching style only.</td><td>Port persona catalog/cache, custom persona gate, language, name, about-me, goals, response length and recurring trigger focus.</td></tr>
+    <tr><td>Safety</td><td>No iOS-equivalent local scanner/structured crisis handling.</td><td>Implement deterministic local safety categories and resource UI before any model call; do not log raw crisis text in analytics.</td></tr>
+    <tr><td>Persistence</td><td>Messages lack source, safety, favorite, feedback, action and discovery fields.</td><td>Room migration with nullable, backward-compatible columns and an explicit schema version.</td></tr>
+  </tbody></table>
+
+  <h2>Tablet and foldable support plan</h2>
+  <div class="callout"><strong>Tablet readiness rating: 5/10 today.</strong> The Compose screens are reusable, but the navigation is phone-first: the app uses a bottom navigation shell, many views stretch with <code>fillMaxWidth()</code>, and only onboarding has a deliberate max-width. We should add adaptive layout rules at the navigation and content boundaries rather than copy every screen into a tablet version.</div>
+  <div class="diagram"><div class="mermaid">
+flowchart LR
+  W[WindowSizeClass + posture] --> N{Width}
+  N -->|compact &lt;600dp| P[Phone: bottom navigation + one pane]
+  N -->|medium 600–839dp| M[Large phone/small tablet: navigation rail + one pane]
+  N -->|expanded ≥840dp| T[Tablet: rail + list/detail or two-pane]
+  T --> C[Shared ViewModels and repositories]
+  M --> C
+  P --> C
+  C --> R[Same routes, state, analytics and privacy rules]
+  </div></div>
+  <h3>Adaptive rules</h3>
+  <ul>
+    <li><strong>Use window size, not device labels.</strong> Read Material 3 <code>WindowSizeClass</code> from the current window and recompute on resize, rotation, split-screen and fold posture. Do not use <code>isTablet</code>, screen density, or a hard-coded model list.</li>
+    <li><strong>Keep a single navigation graph.</strong> Compact windows use the current bottom bar; medium and expanded windows use a navigation rail with the same destinations. The selected destination and back stack stay in the same <code>NavHostController</code>.</li>
+    <li><strong>Coach becomes list/detail.</strong> Expanded width shows session history in a 280–360dp left pane and the active conversation in a centered detail pane. Medium width uses a collapsible rail and one conversation pane. New chat, persona, style and privacy controls become a top-bar/action area rather than competing with the message list.</li>
+    <li><strong>Bound content columns.</strong> Message bubbles, composer and settings forms use readable max widths (roughly 680–760dp) and stay centered; the background can fill the tablet. Never stretch paragraphs or chat bubbles across the entire landscape screen.</li>
+    <li><strong>Use two-pane layouts for high-value screens.</strong> Mental Sky uses sky/list plus selected entry detail; Exercises uses category/filter rail plus cards; Settings uses section rail plus detail; search uses filters plus results. Logging remains a focused modal/sheet with a bounded form.</li>
+    <li><strong>Preserve phone behavior.</strong> Every adaptive branch must call the same ViewModel methods and repositories. Only arrangement changes; business logic, privacy route, safety scanner, persistence and analytics do not fork.</li>
+    <li><strong>Support large text and input.</strong> Respect system font scale, avoid fixed heights, use scrolling at every pane, keep a minimum 48dp touch target, and verify keyboard/pointer/keyboard navigation. Tablet screenshots must include 1.0×, 1.3× and 2.0× font scale.</li>
+    <li><strong>Handle posture and resizing.</strong> On foldables, use hinge bounds/posture to avoid placing a composer or primary button across the hinge. In freeform windows, recompute layout without recreating chat state.</li>
+  </ul>
+  <table><thead><tr><th>Surface</th><th>Compact phone</th><th>Medium</th><th>Expanded tablet</th></tr></thead><tbody>
+    <tr><td>App shell</td><td>Bottom navigation</td><td>Navigation rail</td><td>Navigation rail + optional permanent supporting pane</td></tr>
+    <tr><td>Coach</td><td>One pane, drawer for sessions</td><td>One pane, rail/drawer for sessions</td><td>Sessions list + active chat detail; composer constrained to detail width</td></tr>
+    <tr><td>Mental Sky</td><td>Sky and sheets</td><td>Sky with side actions</td><td>Sky/list beside selected cloud or journal detail</td></tr>
+    <tr><td>Exercises</td><td>Vertical sections</td><td>Adaptive grid</td><td>Filter/category rail + 2–4 column card grid; player opens detail pane</td></tr>
+    <tr><td>Settings</td><td>Single scrolling list</td><td>Section list + detail when space allows</td><td>Permanent settings rail + detail; paywall remains bounded</td></tr>
+    <tr><td>Onboarding</td><td>Current centered flow</td><td>Centered bounded card</td><td>Two-column illustration + content only when it improves reading; never shrink copy to fill space</td></tr>
+  </tbody></table>
+  <h3>Tablet implementation sequence</h3>
+  <ol><li>Add a tested adaptive shell and central window metrics provider.</li><li>Refactor Coach first because its session list/detail model maps directly to expanded width and is part of the current parity work.</li><li>Refactor Mental Sky, Exercises and Settings using the same list/detail primitives.</li><li>Audit every modal, paywall, player, onboarding page and feedback form for max width, keyboard, back behavior and large text.</li><li>Add screenshot and interaction tests for compact, medium, expanded, landscape, split-screen and foldable postures before enabling tablet distribution broadly.</li></ol>
+
+  <h2>3. Target Android architecture</h2>
+  <div class="diagram"><div class="mermaid">
+flowchart LR
+  UI[Compose Coach UI] --> VM[CoachViewModel]
+  VM --> OR[CoachOrchestrator]
+  OR --> PR[PrivacyRouter]
+  PR --> LOCAL[Local route]
+  PR --> HYBRID[Hybrid route]
+  PR --> CLOUD[Cloud route]
+  LOCAL --> RAG[Room entries + local index]
+  RAG --> NANO[Gemini Nano via ML Kit Prompt API / AICore]
+  NANO --> VAL[Structured validator + safety validator]
+  HYBRID --> RAG
+  HYBRID --> CLOUDLLM[Emotica server/Groq or Gemini]
+  CLOUD --> CTX[Context assembler]
+  CTX --> CLOUDLLM
+  CLOUDLLM --> MCP[Optional Emotica MCP reads]
+  VAL --> RENDER[Response renderer]
+  MCP --> RENDER
+  RENDER --> ROOM[Room chat persistence]
+  RENDER --> AMP[Amplitude events: metadata only]
+  </div></div>
+
+  <h3>Components to introduce</h3>
+  <table><thead><tr><th>Component</th><th>Responsibility</th></tr></thead><tbody>
+    <tr><td><code>CoachOrchestrator</code></td><td>Single entry point for send, cancellation, quota, route selection, context assembly, generation, validation, persistence and telemetry.</td></tr>
+    <tr><td><code>CoachPrivacyRouter</code></td><td>Resolves <code>standard</code>, <code>enhanced</code>, <code>ondevice</code>, and capability states. Returns a typed route, never a boolean.</td></tr>
+    <tr><td><code>CoachContextAssembler</code></td><td>Builds bounded, sanitized context from Room and profile settings. It must know what is permitted to leave the device.</td></tr>
+    <tr><td><code>LocalCoachIndex</code></td><td>Local-only lexical/semantic retrieval over journal notes, emotion labels, triggers and Mental Sky entries. Start with deterministic scoring; add embeddings only after measuring Nano quality.</td></tr>
+    <tr><td><code>GeminiNanoCoach</code></td><td>Owns AICore status/download/warm-up, prompt generation, streaming, cancellation, per-app quota and typed errors.</td></tr>
+    <tr><td><code>CoachResponseContract</code></td><td>Strict JSON/structured result with message, quick replies, discovery questions, impacts, proposed actions and safety metadata.</td></tr>
+    <tr><td><code>CoachSafetyScanner</code></td><td>Local preflight and postflight checks. Crisis resource copy is bundled/localized and does not depend on network or model availability.</td></tr>
+    <tr><td><code>CoachPersonaRepository</code></td><td>Bundled catalog → encrypted/local cache → Supabase enabled personas, with locale fallback and feature-flag gating.</td></tr>
+  </tbody></table>
+
+  <h3>Optimized Android route selection</h3>
+  <div class="diagram"><div class="mermaid">
+flowchart TD
+  A[Send] --> B[Local safety scan]
+  B --> C{User privacy mode}
+  C -->|on-device| D{Nano ready?}
+  D -->|yes| E[Local deterministic retrieval + Nano]
+  D -->|downloadable| F[Explain download; keep current turn local/offline]
+  D -->|no, busy, quota, error| G[Local safe reply + explicit switch option]
+  C -->|enhanced| H[Generic server coach; no journal context]
+  C -->|standard| I[Bounded context → Emotica server proxy]
+  E --> J[Typed validator]
+  H --> J
+  I --> J
+  J --> K[Compose renderer + Room persistence]
+  </div></div>
+  <p><strong>First production target:</strong> standard and enhanced parity behind the server proxy. Enable on-device mode only for an internal device matrix after the Nano adapter passes privacy and safety tests. This keeps the Android release useful on every supported device while the local path matures.</p>
+
+  <h2>4. Gemini Nano plan</h2>
+  <p>Use the official ML Kit GenAI Prompt API backed by AICore, rather than embedding a model in the APK. Google documents status states of <code>AVAILABLE</code>, <code>DOWNLOADABLE</code> and <code>UNAVAILABLE</code>; the Prompt API requires API 26+, accepts text prompts, supports streaming and has an input limit of under 4,000 tokens. Availability is device/configuration dependent.</p>
+  <div class="callout"><strong>Privacy rule</strong>When the user selects “On this device”, <em>all</em> journal-derived context stays local. If Nano is unavailable or fails, show a clear “On-device coach unavailable” state and offer the user an explicit one-tap switch to hybrid/cloud. Never silently send the context to the server.</div>
+  <div class="grid">
+    <div class="card"><h3>Capability states</h3><p>Unavailable, downloadable, downloading, ready, quota-limited, busy, safety-blocked and failed. Cache status briefly and refresh on foreground; do not query AICore from every Compose recomposition.</p></div>
+    <div class="card"><h3>Session policy</h3><p>One Nano session per active Room chat. Reuse it across turns. Reset on new chat, privacy change, language/persona change, or long inactivity. Serialize generation; a second send is disabled or queued.</p></div>
+    <div class="card"><h3>Prompt budget</h3><p>Reserve space for system instructions, response schema, tool descriptions and output. Use token counting where available; otherwise conservative character estimates. Retrieve a small top-k context and trim by record boundary.</p></div>
+    <div class="card"><h3>Model limitations</h3><p>Nano is a local assistant, not a clinical authority. Keep replies short, avoid diagnosis, require confirmation for writes, and use deterministic app code for calendar/reminder/journal mutations.</p></div>
+  </div>
+  <p class="small">Official references: <a href="https://developer.android.com/ai/gemini-nano">Gemini Nano on Android</a> and <a href="https://developer.android.com/agents/skills/device-ai/ml-kit-genai-prompt-api/references/get-started">ML Kit Prompt API setup and limits</a>.</p>
+
+  <h2>5. Privacy routes and data boundaries</h2>
+  <table><thead><tr><th>Mode</th><th>Local</th><th>May leave device</th><th>User-facing behavior</th></tr></thead><tbody>
+    <tr><td><span class="pill">On device</span></td><td>Raw entries, retrieval, profile facts, transcript, Nano inference and safety scan.</td><td>Only anonymous operational analytics: route, latency bucket, status, counts. Never text, note, emotion combination or prompt.</td><td>Badge “On-device”. If unsupported, explain and ask before switching to hybrid.</td></tr>
+    <tr><td><span class="pill">Hybrid</span></td><td>Retrieval and redaction.</td><td>Only the minimum redacted context plus the user message to Emotica server/cloud LLM.</td><td>Badge “Hybrid”. Explain that the answer used the cloud while journal search stayed local.</td></tr>
+    <tr><td><span class="pill">Standard</span></td><td>Context assembly, local trends and safety preflight.</td><td>Bounded context to the existing Emotica server/Groq/Gemini route; optional MCP read tools under flags.</td><td>Normal coach experience with source metadata hidden unless needed for transparency.</td></tr>
+    <tr><td><span class="pill">Enhanced</span></td><td>Everything needed for generic coaching.</td><td>Message and non-sensitive settings only; no journal context.</td><td>Coach says when it cannot see history instead of inventing patterns.</td></tr>
+  </tbody></table>
+
+  <h2>6. Personalisation contract</h2>
+  <p>Build one platform-neutral <code>CoachProfileSnapshot</code> before prompting. It should contain only fields the user has supplied or the app has computed:</p>
+  <ul><li>Display name, about-me, goals, response length, coaching style and effective language.</li><li>Selected persona ID, localized name/tagline/blurb, safe character description and custom-persona feature flag.</li><li>Recent emotion distribution, recurring triggers and a confidence-gated focus trigger.</li><li>Conversation summary and learned facts, kept per persona where iOS does so.</li><li>Capability and privacy mode; never place secrets, auth tokens, device identifiers or raw analytics IDs in the prompt.</li></ul>
+  <p>Server personas should follow iOS: enabled rows from <code>voice_personas</code>, exact locale first, English fallback, local cache, bundled catalog fallback. Custom persona text is data, not instructions: fence, strip control delimiters, cap length, and state that safety, language and output rules override it.</p>
+
+  <h2>7. Response contract and Android rendering</h2>
+  <pre>{
+  "message": "Short, specific coaching response",
+  "quickReplies": ["Tell me more", "Try a pause"],
+  "discoveryQuestions": ["What changed today?"],
+  "impactLabels": ["Calm", "Work"],
+  "proposedActions": [],
+  "safety": {"level": "safe", "showResources": false},
+  "source": "on_device"
+}</pre>
+  <p>Cloud models can still return a compatibility text format during migration, but Android must parse it once at the boundary and render typed data. The UI must never show raw tags such as <code>[[impact:...]]</code>. Proposed calendar, reminder, notification or journal actions are preview cards; the user confirms before the app executes them. A model must never claim an action happened before the Android action layer reports success.</p>
+  <div class="grid">
+    <div class="card"><h3>Message bubble</h3><p>Plain text, markdown-free by default, timestamp, source/privacy label when relevant, feedback and favorite controls.</p></div>
+    <div class="card"><h3>Quick replies</h3><p>Two or three compact chips; tapping sends a new user turn and records that it was suggested.</p></div>
+    <div class="card"><h3>Impact chips</h3><p>Map canonical emotion/trigger IDs to Android localized labels and colors. Never trust arbitrary model colors or labels.</p></div>
+    <div class="card"><h3>Safety card</h3><p>Stable local crisis resources, emergency action, dismissible once per session, and no raw crisis text in analytics or crash logs.</p></div>
+  </div>
+
+  <h2>8. Safety, abuse resistance and quality gates</h2>
+  <ol><li><strong>Preflight:</strong> classify locally into safe, distress, self-harm concern, imminent danger, abuse/violence, medical emergency or unknown. Do not attempt to diagnose.</li><li><strong>Route:</strong> crisis concern gets the deterministic resource card immediately; generation may add supportive words but cannot remove the resources.</li><li><strong>Prompt safety:</strong> user profile and persona fields are fenced as data; injection-like text cannot override language, privacy, safety or output rules.</li><li><strong>Postflight:</strong> reject empty, language-breaking, repetitive, incomplete or action-claiming output. Retry only within the same privacy boundary.</li><li><strong>Action confirmation:</strong> schedule/write/delete requires a preview and explicit confirmation, except a clearly stated “just log it” flow; destructive operations require a second confirmation.</li><li><strong>Fallback:</strong> local safe copy for offline/Nano errors. Cloud correction is allowed only in standard/hybrid, never in fully on-device mode.</li></ol>
+
+  <h2>9. Feature flags and analytics</h2>
+  <p>Mirror iOS flags and default new Android flags off until parity tests pass:</p>
+  <p><code>coach_enabled</code>, <code>coach_personas_enabled</code>, <code>coach_custom_personas_enabled</code>, <code>coach_ondevice_enabled</code>, <code>coach_nano_enabled</code>, <code>coach_local_rag_enabled</code>, <code>coach_tool_routing_enabled</code>, <code>coach_actions_enabled</code>, <code>coach_mcp_enabled</code>, <code>coach_mcp_write_enabled</code>, <code>coach_safety_guard_enabled</code>, <code>coach_quality_gate_enabled</code>, and <code>coach_disclosure_labels_enabled</code>.</p>
+  <table><thead><tr><th>Event</th><th>Safe properties</th><th>Never include</th></tr></thead><tbody>
+    <tr><td><code>coach_message_sent</code></td><td>route, language, suggested_reply, message_length_bucket</td><td>message text</td></tr>
+    <tr><td><code>coach_generation_completed</code></td><td>source, latency_bucket, output_length_bucket, context_hit_count</td><td>prompt/response</td></tr>
+    <tr><td><code>coach_nano_status</code></td><td>status, model_ready, download_result</td><td>device identifier</td></tr>
+    <tr><td><code>coach_fallback</code></td><td>from_route, to_route only after user consent, reason category</td><td>journal content</td></tr>
+    <tr><td><code>coach_action_confirmed</code></td><td>action_type, result, duration_bucket</td><td>title, notes, date details</td></tr>
+    <tr><td><code>coach_safety_intervention</code></td><td>coarse category and resource_shown=true</td><td>raw user text, diagnosis</td></tr>
+  </tbody></table>
+
+  <h2>10. Delivery sequence</h2>
+  <div class="phase"><h3>Phase 0 — contract and measurement</h3><p>Freeze the shared response schema, privacy matrix, event names, feature flags, localization keys and Room migration plan. Add no UI behavior yet.</p></div>
+  <div class="phase"><h3>Phase 1 — iOS behavior parity in Android cloud mode</h3><p>Refactor Android around <code>CoachOrchestrator</code>; add profile/persona context, bounded context assembly, language/style rules, cloud provider fallback, typed parsing, feedback/favorites, quick replies, discovery and safe action previews.</p></div>
+  <div class="phase"><h3>Phase 2 — local safety and local retrieval</h3><p>Port the deterministic scanner and resource copy. Add Room schema fields. Build a local index using normalized emotion/trigger/date/note features and deterministic ranking. This gives useful privacy behavior before Nano.</p></div>
+  <div class="phase"><h3>Phase 3 — Gemini Nano adapter</h3><p>Add the ML Kit Prompt API, capability/download UI, warm-up, streaming, cancellation, quota and structured output. Gate with a remote flag and a local kill switch. Test only on supported AICore devices first.</p></div>
+  <div class="phase"><h3>Phase 4 — parity rendering and actions</h3><p>Match iOS cards, chips, source labels, empty state, typing state, crisis card and action confirmation. Execute actions through Android repositories after confirmation; persist status.</p></div>
+  <div class="phase"><h3>Phase 5 — staged rollout</h3><p>Internal emulator/UI tests → supported Pixel/Nano devices → 1% Android beta → 10% → 50% → 100%. Keep cloud standard mode as the default until Nano error, latency, safety and retention metrics are healthy.</p></div>
+
+  <h2>11. Testing and acceptance criteria</h2>
+  <ul><li>Room migration preserves all existing sessions/messages and imports iOS chat exports without duplicate IDs.</li><li>Every privacy mode has an automated network assertion: fully on-device sends no journal text; enhanced sends no journal context.</li><li>Gemini Nano unavailable, downloadable, quota-limited, offline and guardrail-blocked states have deterministic UI and no crash.</li><li>Switching persona, language or privacy mode resets/rebuilds the local session without losing visible chat history.</li><li>Structured output never leaks tags, invalid labels or unsupported actions into the bubble.</li><li>Safety tests cover crisis language, ambiguous distress, medical questions, abuse and ordinary sadness; crisis resources remain visible.</li><li>Golden Compose screenshots cover light/dark themes, long languages, large font scale, RTL readiness, keyboard, rotation and fold/tablet widths.</li><li>Performance targets: first local response after warm-up ≤3 seconds p50, cloud p50 ≤4 seconds, no main-thread AICore status calls, and bounded memory for 1,000 journal entries.</li><li>Analytics dashboards separate route/source, Nano availability, fallback rate, action completion and safety interventions without collecting journal content.</li></ul>
+
+  <h2>12. Decisions to keep explicit</h2>
+  <div class="callout"><strong>Do not promise “Gemini Nano on every Android”.</strong> AICore support and model availability vary by device, OS image, region and model download state. The product promise should be “On-device when your device supports it”, with a visible capability explanation.</div>
+  <ul><li>Use server-side MCP only for standard mode and only behind the same iOS flags; do not recreate MCP inside Nano in the first release.</li><li>Start with Android-local deterministic retrieval. Add local embeddings only after evaluating quality, storage and multilingual coverage.</li><li>Keep actions app-owned and confirmation-driven. Model tool calls express intent; repositories perform the mutation.</li><li>Keep text coach and voice coach contracts separate. Share persona/profile/privacy primitives, not a combined streaming stack.</li></ul>
+
+  <h2>Source audit</h2>
+  <p class="small">Local implementation reviewed: <code>emotica-ios/Emotica/CoachChatView.swift</code>, <code>OnDeviceLLMManager.swift</code>, <code>OnDeviceRAGManager.swift</code>, <code>OnDeviceToolRouter.swift</code>, <code>CoachSafetyScanner.swift</code>, <code>CoachPersonaStore.swift</code>, <code>CoachQuotaManager.swift</code>, <code>SupabaseManager.swift</code>; Android: <code>ui/coach/CoachViewModel.kt</code>, <code>ui/coach/CoachScreen.kt</code>, <code>data/remote/GroqApiService.kt</code>, Room chat entities/DAO/repository and DataStore settings.</p>
+  <p class="small">Platform reference: <a href="https://developer.android.com/ai/gemini-nano">developer.android.com/ai/gemini-nano</a> · <a href="https://developer.android.com/agents/skills/device-ai/ml-kit-genai-prompt-api/references/get-started">ML Kit GenAI Prompt API</a>.</p>
+</main></body></html>
