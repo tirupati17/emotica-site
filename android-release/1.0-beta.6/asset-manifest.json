@@ -1,0 +1,468 @@
+{
+  "version": "1.0-beta.6",
+  "appVersion": "1.0.13",
+  "images": [
+    {
+      "file": "1.0-beta.6/en/01-mental-sky.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 237018,
+      "sha256": "076e9f9c94fb188240c4a822103f4b66c65d17c12d7218a451aed668c7c76aa3"
+    },
+    {
+      "file": "1.0-beta.6/en/02-feelings.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 221386,
+      "sha256": "a070dc1cd369895ebfb3ec4d36c970dbf391bdc5a485509a3c380a76448587b2"
+    },
+    {
+      "file": "1.0-beta.6/en/03-exercises.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 851784,
+      "sha256": "7cc727ed0bd37e490767ea6ce21ba2546ee4f21a65f6a0264ffe64aded98590e"
+    },
+    {
+      "file": "1.0-beta.6/en/04-exercise-cards.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 361146,
+      "sha256": "8c7d4395568de6d96b065a397942c96d44cfc6cfe98951c6771b0ef742fd0923"
+    },
+    {
+      "file": "1.0-beta.6/en/05-journal.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 184135,
+      "sha256": "57c463195e442a666d3ad42a9bb6bbfc21cea4152d9912ffa0a9b052bb031402"
+    },
+    {
+      "file": "1.0-beta.6/en/06-emotion-log.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 219378,
+      "sha256": "33db12074ae0c0df1bcbb909a4183288f5b3adda8375cb9436cf2e508a452f25"
+    },
+    {
+      "file": "1.0-beta.6/en/07-player.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 475858,
+      "sha256": "f5f15e6ea3ad3fb28416417bbae5167fcd642a38a143756240afc3fc43919de7"
+    },
+    {
+      "file": "1.0-beta.6/en/08-live-coach.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 182523,
+      "sha256": "ed96b48af708f2b6fb6c64ecc63baef7abaecf67337532661017220aa081edea"
+    },
+    {
+      "file": "1.0-beta.6/en/09-coach-chat.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 263386,
+      "sha256": "cc7c698d863099139a4934a3ec14c3a6891951bec3753c10bc0f15b551457f87"
+    },
+    {
+      "file": "1.0-beta.6/en/10-personalize.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 231098,
+      "sha256": "bedd98a59ca5c6faa94bdee25ec975e81b0d0b4b0084150a2476d1f4bd4c1279"
+    },
+    {
+      "file": "1.0-beta.6/en/feature-graphic.png",
+      "width": 1024,
+      "height": 500,
+      "bytes": 55468,
+      "sha256": "a399688fe21983720d381efb06a80acb6eb68f73e5d6cf5b451e361e56baeca3"
+    },
+    {
+      "file": "1.0-beta.6/hi/01-mental-sky.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 219928,
+      "sha256": "7d141dc70c264903b7b60489aea759062079b177a3bd822cfdd4a610fde75257"
+    },
+    {
+      "file": "1.0-beta.6/hi/02-feelings.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 203325,
+      "sha256": "748be667011511e0fbf183252f24527d3cb39528efa22e6355970e62a8a13f88"
+    },
+    {
+      "file": "1.0-beta.6/hi/03-exercises.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 829405,
+      "sha256": "cb3578c60e829d0f9ab8902f8a9457edd1ab15755a85b6a54b6d64ecffad058b"
+    },
+    {
+      "file": "1.0-beta.6/hi/04-exercise-cards.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 345833,
+      "sha256": "048c59412303a9a0915e79fba326f1abbb74ff2044917ab9884f017b834b6b3c"
+    },
+    {
+      "file": "1.0-beta.6/hi/05-journal.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 155390,
+      "sha256": "91d3002e3cc197121bae75c03c6eb6b7e7dba613cf9d304d456d488db3650458"
+    },
+    {
+      "file": "1.0-beta.6/hi/06-emotion-log.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 217388,
+      "sha256": "fa9816e31883f8a011a49b857793bd0f87c8ded61ab8641a450ec564b640e8f4"
+    },
+    {
+      "file": "1.0-beta.6/hi/07-player.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 469955,
+      "sha256": "629249807eeaea2520790f24a3ead38090fd078cca8c3801c60df845e8432501"
+    },
+    {
+      "file": "1.0-beta.6/hi/08-live-coach.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 241806,
+      "sha256": "d291d1e9d296ac93ad45a9c13aa5c0316052a988f7052e566d47b096cb87fbc4"
+    },
+    {
+      "file": "1.0-beta.6/hi/09-coach-chat.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 252812,
+      "sha256": "e38390f0535a6c2a372082e7a09e3a43ca5305aa3f87e9833126229b8b9e937a"
+    },
+    {
+      "file": "1.0-beta.6/hi/10-personalize.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 220592,
+      "sha256": "d10457c963bdd33abad7ec1d5790774b52b85a039d3ac3a932baeb97dda02720"
+    },
+    {
+      "file": "1.0-beta.6/hi/feature-graphic.png",
+      "width": 1024,
+      "height": 500,
+      "bytes": 51787,
+      "sha256": "5c3b3fe4ba1001d50c937357ddceb404b35f8868edf2aaf0b92f2a8301545099"
+    },
+    {
+      "file": "1.0-beta.6/de/01-mental-sky.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 241345,
+      "sha256": "4863a01520bcfe1c70c6e4445e6954c736290a52641b7d8d44f78544641c364f"
+    },
+    {
+      "file": "1.0-beta.6/de/02-feelings.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 230440,
+      "sha256": "796eed951d0ce40e8357dcc78356003bc023db27c2773217284459c5d394d4e2"
+    },
+    {
+      "file": "1.0-beta.6/de/03-exercises.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 850291,
+      "sha256": "6179e82e6b6d8cfa7e92a84afd32f55f215af441ac13a7156bcce7b41fc3ce96"
+    },
+    {
+      "file": "1.0-beta.6/de/04-exercise-cards.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 365561,
+      "sha256": "fb8e662db2b0c145c1aeefe1b3baa3f8934c81d5013a165f2b859953fad172cf"
+    },
+    {
+      "file": "1.0-beta.6/de/05-journal.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 186174,
+      "sha256": "78f9691100cbd01f596a79de5d11d8d600db301d8e5d8e7d8cce20e50dc83d73"
+    },
+    {
+      "file": "1.0-beta.6/de/06-emotion-log.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 227393,
+      "sha256": "507a4996ee0544868e6a85d7a80a6d237054d7c5c122607db05ac75a00b9e65c"
+    },
+    {
+      "file": "1.0-beta.6/de/07-player.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 474762,
+      "sha256": "8ccc42a6668bd30608a77d7440f8947e833a9e75d907051691daa7bafa056284"
+    },
+    {
+      "file": "1.0-beta.6/de/08-live-coach.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 192880,
+      "sha256": "3a7c4401d6f8badc4347f9cc4eb09873a7295eed6483f9190cecf9f77dea6bfd"
+    },
+    {
+      "file": "1.0-beta.6/de/09-coach-chat.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 245229,
+      "sha256": "ae3802ec719acb64f4857a53b2be445b1fa78d9ba09169801679736228881af5"
+    },
+    {
+      "file": "1.0-beta.6/de/10-personalize.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 234465,
+      "sha256": "42e74808bba3761d89e160b2abaee0d77f21501fa99e12f1d7764d24b3d3fc91"
+    },
+    {
+      "file": "1.0-beta.6/de/feature-graphic.png",
+      "width": 1024,
+      "height": 500,
+      "bytes": 55604,
+      "sha256": "2d633c079d2fa02614875e7c2e0ea36d64065cd025935cfccaae5b4db58b5e67"
+    },
+    {
+      "file": "1.0-beta.6/ru/01-mental-sky.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 244183,
+      "sha256": "9c20b62a84a83441e398f7f1613de2ed53f462692c414929e2a6c69d5949ee62"
+    },
+    {
+      "file": "1.0-beta.6/ru/02-feelings.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 236944,
+      "sha256": "b9854018dd143b17a95bc362b080198c8d82df2d8ef5886fad40dc980450ed09"
+    },
+    {
+      "file": "1.0-beta.6/ru/03-exercises.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 856915,
+      "sha256": "f25b36036a17bfb5b1722e95011dcf019663f5b7f2d22c7a21a16c43bd471329"
+    },
+    {
+      "file": "1.0-beta.6/ru/04-exercise-cards.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 341938,
+      "sha256": "7cdc4fd0e2c52c4028f23501d8296ab8242688a5c5d687f63dadb07f54ae1665"
+    },
+    {
+      "file": "1.0-beta.6/ru/05-journal.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 177607,
+      "sha256": "5c5689266250d2adbf737aa7ea85a3a88ef2d419c42d875a26c4e5ddd62e40b6"
+    },
+    {
+      "file": "1.0-beta.6/ru/06-emotion-log.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 234210,
+      "sha256": "c2f6bc3b9a2bb82b12aa363d448e8b1938de857a56e9df51444ce98ff692403e"
+    },
+    {
+      "file": "1.0-beta.6/ru/07-player.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 480441,
+      "sha256": "14004cbaa31f82aa90d53d31cb8505907b11aa40ade95eb7157c783e8fa36e99"
+    },
+    {
+      "file": "1.0-beta.6/ru/08-live-coach.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 172071,
+      "sha256": "e61dcab9a1f5c2a31ac2978e3369de432559acbfedb92a6a787086fcf961f7a6"
+    },
+    {
+      "file": "1.0-beta.6/ru/09-coach-chat.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 269552,
+      "sha256": "be4f02939d2acc12ccd8cbb974a68fb512be64d7aeeec4686cbdda095b671919"
+    },
+    {
+      "file": "1.0-beta.6/ru/10-personalize.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 226770,
+      "sha256": "631a005a9f3334da2e99b5dd203841ef1b3bd5eb802ceb97a24192eb4fef3f7e"
+    },
+    {
+      "file": "1.0-beta.6/ru/feature-graphic.png",
+      "width": 1024,
+      "height": 500,
+      "bytes": 57114,
+      "sha256": "777c1d6b5097c228ce82b4e92ee9fe593e9b653723645152e40bc2abb64f7eb2"
+    },
+    {
+      "file": "1.0-beta.6/zh-Hans/01-mental-sky.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 217418,
+      "sha256": "42dacecb402a03b67d9be8e7b43ef319ab435820da0b003a03ad0bfbd5d8343f"
+    },
+    {
+      "file": "1.0-beta.6/zh-Hans/02-feelings.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 212069,
+      "sha256": "5ae038d53c3517f8141abf35e795ee9fa05f7ee425ebf65d3af45b359bfb3d1e"
+    },
+    {
+      "file": "1.0-beta.6/zh-Hans/03-exercises.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 760228,
+      "sha256": "b59a15bf5cee5ccd53d01f19f64e978405e156b28b882b9334cf7679b4654243"
+    },
+    {
+      "file": "1.0-beta.6/zh-Hans/04-exercise-cards.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 339286,
+      "sha256": "7cefdd658c142b1cff2cc817330d53d6cd2538dff765e647d74628ff5d00cb1e"
+    },
+    {
+      "file": "1.0-beta.6/zh-Hans/05-journal.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 147054,
+      "sha256": "e8adb396fdd705a192b12bdd580982076198648462eccb0b3e73ea987abab055"
+    },
+    {
+      "file": "1.0-beta.6/zh-Hans/06-emotion-log.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 203713,
+      "sha256": "fabea653a6ccfd02a30375b25753a9aec1721c9df87b1025c39957d6d04ce91f"
+    },
+    {
+      "file": "1.0-beta.6/zh-Hans/07-player.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 403660,
+      "sha256": "d07f3655a87ab68440993d515dcdefab1bf14d0d52e33950c8cf201c172390c8"
+    },
+    {
+      "file": "1.0-beta.6/zh-Hans/08-live-coach.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 170218,
+      "sha256": "16a933042d302d721e61fd7c3fce230c2649467e8e3b69f01b8c3fa62a8837d6"
+    },
+    {
+      "file": "1.0-beta.6/zh-Hans/09-coach-chat.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 256551,
+      "sha256": "328d897d7de9c08a2201769eeafe1ea1cd83946c610b9ccb279b2733e77641b9"
+    },
+    {
+      "file": "1.0-beta.6/zh-Hans/10-personalize.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 229992,
+      "sha256": "4164f34053b1bc2d3be85c8be5b73727224096aa31835a059409e8ebe205be07"
+    },
+    {
+      "file": "1.0-beta.6/zh-Hans/feature-graphic.png",
+      "width": 1024,
+      "height": 500,
+      "bytes": 56075,
+      "sha256": "fe7ba0ed55e98a07607c815239875a468933671f0d6c929e423c57fe5c60faa8"
+    },
+    {
+      "file": "1.0-beta.6/zh-Hant/01-mental-sky.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 214369,
+      "sha256": "06d453e6c6038c253481ca5c59f9b5ba08002c52c6e114be261e52cce8633988"
+    },
+    {
+      "file": "1.0-beta.6/zh-Hant/02-feelings.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 214794,
+      "sha256": "2a946a7b529868deaa7d5831b7577551e8f7af36bfb60147ba36334e0f009737"
+    },
+    {
+      "file": "1.0-beta.6/zh-Hant/03-exercises.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 764352,
+      "sha256": "faf0d6b1c2a7d348e9d234fb77c7e3b4e7909bb00aac46ed234ca1543cb6a8d0"
+    },
+    {
+      "file": "1.0-beta.6/zh-Hant/04-exercise-cards.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 343574,
+      "sha256": "976624009260ab25ebe734b22ea46cdfcd3d5800e5cb9e1fc1576f85feea8649"
+    },
+    {
+      "file": "1.0-beta.6/zh-Hant/05-journal.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 145443,
+      "sha256": "9980f36734a31c849f271e4b05fd1769581c7f9e3a54077411c81a29ead23af7"
+    },
+    {
+      "file": "1.0-beta.6/zh-Hant/06-emotion-log.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 208200,
+      "sha256": "6db75043cb823f5cbc78c339390b7b70bca7a7d96b221fc041cc902138076407"
+    },
+    {
+      "file": "1.0-beta.6/zh-Hant/07-player.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 410343,
+      "sha256": "b8c080dcd3b0f6a193e4703b3a2f9cb378f3ed58e5ba6c6acfae4b5fc2f24602"
+    },
+    {
+      "file": "1.0-beta.6/zh-Hant/08-live-coach.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 181005,
+      "sha256": "4304e91488e1e1e614be5be9728dadf292d0e1838a9cad94901d2e3d6cc88f24"
+    },
+    {
+      "file": "1.0-beta.6/zh-Hant/09-coach-chat.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 303613,
+      "sha256": "c0dceb3c8a9b3dc551074a4353bce27ccd083fd8cd500b8a64235c2ce97ca5b0"
+    },
+    {
+      "file": "1.0-beta.6/zh-Hant/10-personalize.png",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 235114,
+      "sha256": "3d04a512b7f6e8133fb911114d843b6bbad99c1ae50035f24af7a8076fb74fbe"
+    },
+    {
+      "file": "1.0-beta.6/zh-Hant/feature-graphic.png",
+      "width": 1024,
+      "height": 500,
+      "bytes": 56746,
+      "sha256": "63833a22122cc6271a22283e0aed1456088727082f9f12f155955077d4bbb884"
+    }
+  ]
+}
