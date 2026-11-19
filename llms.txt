@@ -1,0 +1,52 @@
+# Emotica - AI-Powered Emotion Tracker
+
+> Emotica is a private AI-powered emotion tracking app for iOS that helps users understand their emotional patterns with end-to-end encryption.
+
+## About Emotica
+
+Emotica is a free iOS app designed to help you understand your emotions better. Using advanced AI and a privacy-first approach, Emotica provides personalized insights about your emotional patterns while keeping your data completely private through zero-knowledge encryption.
+
+## Key Features
+
+- **Emotion Logging**: Track your daily moods with intuitive emotion selection and intensity tracking
+- **Private Journaling**: Write personal reflections with end-to-end AES-GCM-256 encryption
+- **AI Insights**: Get personalized coaching and pattern recognition powered by AI
+- **Trend Analysis**: Visualize your emotional patterns over time with beautiful charts
+- **Trigger Identification**: Understand what causes your emotional reactions
+- **Secure Cloud Sync**: Sync across devices with zero-knowledge encryption
+- **Daily Check-ins**: Regular prompts to help build emotional awareness habits
+
+## Privacy & Security
+
+Emotica uses a zero-knowledge architecture:
+- All data is encrypted on-device using AES-GCM-256 before any sync
+- Encryption keys are stored in the iOS Keychain - we never have access
+- We cannot read your journal entries, emotions, or personal notes
+- Anonymous metadata only - no personally identifiable information stored on servers
+
+## Technology Stack
+
+- iOS native app built with SwiftUI
+- Supabase for secure backend and authentication
+- Firebase for anonymous analytics (no personal data)
+- OneSignal for optional push notifications
+- On-device AI processing for privacy
+
+## Download
+
+Emotica is currently available for iOS through Apple TestFlight.
+Download: https://emotica.me
+
+## Company
+
+Emotica is developed by Celerstudio.
+
+## Links
+
+- Website: https://emotica.me
+- Privacy Policy: https://emotica.me/privacy
+- Terms of Service: https://emotica.me/terms
+
+## Contact
+
+For privacy inquiries: hello@emotica.me

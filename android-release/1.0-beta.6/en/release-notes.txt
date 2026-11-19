@@ -1,0 +1,3 @@
+• Corrected remaining English labels in German, Hindi and Punjabi
+• Improved translated intensity controls, settings and backup messages
+• Includes the latest onboarding, feedback and Emotica Pro improvements

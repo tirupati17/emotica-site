@@ -1,0 +1,65 @@
+{
+  "title": "Emotica: Diário de Humor",
+  "shortDescription": "Emotica AI: registro de humor e diário emocional com coach de voz e sono.",
+  "fullDescription": "Emotica (Emotica AI) é um registro de humor (mood tracker) e diário emocional para o seu bem-estar mental no dia a dia. Anote como você se sente em segundos, escreva num diário privado, converse com um coach de voz tranquilo e encontre uma meditação ou um som para dormir de acordo com o seu humor.\n\nACOMPANHE SEU HUMOR E SUAS EMOÇÕES\nEscolha como você se sente, de feliz e grato a ansioso, estressado, triste ou cansado. Informe a intensidade e o motivo: trabalho, sono, família, saúde ou outro. Cada registro vira uma nuvem no seu Mental Sky.\n\nDIÁRIO PRIVADO\nO Emotica também é seu diário do dia a dia e diário de humor. Escreva seus pensamentos, adicione fotos, notas de voz ou desenhos e use perguntas guiadas e modelos de gratidão, reflexão e autocuidado. Tudo é salvo enquanto você escreve e o diário fica criptografado no seu aparelho. Não precisa de conta.\n\nCONVERSE COM O COACH AO VIVO\nQuando escrever não basta, toque na nuvem e fale. O coach ao vivo escuta, ajuda você a nomear o que sente e sugere um próximo passo, em português, inglês e muitos outros idiomas. Você começa com tempo grátis e pode recarregar horas quando quiser. É apoio e reflexão, não substitui ajuda profissional.\n\nACALME A MENTE\nMeditações guiadas, afirmações, sons para dormir, histórias para dormir, mantras Om e frequências relaxantes, sugeridos pelo seu humor recente para estresse, ansiedade ou uma noite agitada.\n\nENTENDA SEUS PADRÕES\nVeja seu histórico de humor, sequências e os gatilhos que marcam seus dias.\n\nEMOTICA PRO\nComece grátis. O Emotica Pro libera toda a biblioteca de meditação e sono, ferramentas de diário ilimitadas e mais tempo de coach, mensal, anual ou vitalício. Disponível em 19 idiomas.\n\nO Emotica apoia o bem-estar emocional e o autocuidado. Não é um dispositivo médico e não diagnostica nem trata doenças. Em uma crise, procure o serviço de emergência local.\n\nSaiba mais em https://emotica.me",
+  "releaseNotes": "• O Emotica agora fala português do Brasil em todo o app\n• Textos, botões e mensagens revisados em português\n• Inclui as últimas melhorias do Coach, dos exercícios e do Emotica Pro",
+  "headings": [
+    [
+      "Um céu de",
+      "sentimentos."
+    ],
+    [
+      "Dê nome ao",
+      "que sente."
+    ],
+    [
+      "Encontre sua",
+      "pausa."
+    ],
+    [
+      "Sons ou",
+      "orientação."
+    ],
+    [
+      "Suas palavras,",
+      "seu espaço."
+    ],
+    [
+      "Como você",
+      "se sente?"
+    ],
+    [
+      "Ouça.",
+      "Relaxe."
+    ],
+    [
+      "Fale",
+      "em voz alta."
+    ],
+    [
+      "Um coach que",
+      "escuta."
+    ],
+    [
+      "Do seu",
+      "jeito."
+    ]
+  ],
+  "featureHeading": [
+    "Espaço para cada",
+    "sentimento."
+  ],
+  "altText": {
+    "feature-graphic.png": "Ícone do Emotica e Espaço para cada sentimento. Cinco nuvens em tons pastel com símbolos e nomes de emoções.",
+    "01-mental-sky.png": "Os sentimentos registrados aparecem como nuvens no Céu Mental.",
+    "02-feelings.png": "Escolha um sentimento e a intensidade com que você o sente.",
+    "03-exercises.png": "Explore exercícios e sugestões com base nos seus sentimentos recentes.",
+    "04-exercise-cards.png": "Cartões redondos de sons e cartões retangulares de exercícios guiados na introdução.",
+    "05-journal.png": "Escreva um registro pessoal no diário com título e seus pensamentos.",
+    "06-emotion-log.png": "Escolha sentimentos em categorias ilustradas no registro completo de emoções.",
+    "07-player.png": "Player de exercícios com arte, controles de áudio e timer para dormir.",
+    "08-live-coach.png": "Coach ao vivo por voz: o coach cumprimenta você em voz alta e a conversa aparece como transcrição.",
+    "09-coach-chat.png": "Chat com o coach: pergunte sobre padrões nas suas emoções e receba uma resposta cuidadosa.",
+    "10-personalize.png": "Personalize o coach: escolha um companheiro, seu nome, o idioma do chat e o estilo de coaching."
+  }
+}

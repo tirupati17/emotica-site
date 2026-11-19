@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>A gift for you on Emotica</title>
+<meta name="description" content="Someone who is grateful for you gave you Emotica for life." />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Emotica" />
+<meta property="og:title" content="A gift for you on Emotica" />
+<meta property="og:description" content="Someone who is grateful for you gave you Emotica for life." />
+<meta property="og:image" content="https://emotica.me/assets/share_image.png" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="icon" type="image/png" href="/assets/app_icon_transparent@2x.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Lexend', system-ui, -apple-system, sans-serif;
+    background: radial-gradient(circle at 50% 0%, #2a1f5e 0%, #1F174A 55%, #140f33 100%);
+    color: #fff; min-height: 100vh;
+    display: flex; align-items: center; justify-content: center; padding: 24px 16px;
+  }
+  .card {
+    width: 100%; max-width: 440px; text-align: center;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 28px; padding: 32px 24px; backdrop-filter: blur(8px);
+  }
+  .logo { height: 48px; margin: 0 auto 22px; display: block; }
+  .gift {
+    width: 88px; height: 88px; margin: 0 auto 18px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(255,204,230,0.16); border: 1px solid rgba(255,204,230,0.38);
+  }
+  .gift svg { width: 42px; height: 42px; color: #FFCCE6; }
+  .badge {
+    display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: .04em;
+    text-transform: uppercase; color: #C4B5FD;
+    background: rgba(124,58,237,0.18); border: 1px solid rgba(124,58,237,0.35);
+    padding: 4px 12px; border-radius: 999px; margin-bottom: 14px;
+  }
+  h1 { font-size: 26px; font-weight: 700; line-height: 1.25; margin-bottom: 14px; }
+  blockquote {
+    font-size: 17px; line-height: 1.55; color: #F4F1FF; margin: 0 0 16px;
+    padding: 16px 18px; border-radius: 18px; text-align: left;
+    background: rgba(255,204,230,0.08); border: 1px solid rgba(255,204,230,0.22);
+    overflow-wrap: anywhere;
+  }
+  blockquote:empty { display: none; }
+  p.desc { font-size: 15px; line-height: 1.55; color: rgba(255,255,255,0.75); margin-bottom: 20px; }
+  a.btn {
+    display: block; text-decoration: none; font-weight: 600; font-size: 16px;
+    padding: 15px; border-radius: 16px; margin-bottom: 12px;
+  }
+  a.primary { background: #7C3AED; color: #fff; }
+  a.store { background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(255,255,255,0.14); }
+  ol.steps { text-align: left; margin: 18px 0 6px 20px; font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.68); }
+  .foot { margin-top: 14px; font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.5; }
+  .hidden { display: none; }
+</style>
+</head>
+<body>
+  <main class="card">
+    <img class="logo" src="/assets/logoDarkMode@2x.webp" alt="Emotica" />
+    <div class="gift" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5C10 3 12 8 12 8s2-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg>
+    </div>
+    <span class="badge" id="badge">Thanksgiving gift</span>
+    <h1 id="title">Someone is grateful for you</h1>
+    <blockquote id="note"></blockquote>
+    <p class="desc" id="desc">They gave you Emotica for life: a private journal for how you feel, where you can talk instead of type, with breathing and sleep exercises. Free, nothing to pay, ever.</p>
+
+    <a class="btn primary" id="openApp" href="emotica://gift">Open your gift in Emotica</a>
+    <a class="btn store" id="ios" href="https://apps.apple.com/app/id6757162931">Get Emotica on the App Store</a>
+    <a class="btn store" id="android" href="https://play.google.com/store/apps/details?id=com.emotica.android">Get Emotica on Google Play</a>
+
+    <ol class="steps" id="steps">
+      <li>Install Emotica.</li>
+      <li>Come back to this link.</li>
+      <li>Tap "Open your gift in Emotica".</li>
+    </ol>
+    <p class="foot" id="foot">Emotica, emotional intelligence for every day.</p>
+  </main>
+
+<script>
+(function () {
+  var params = new URLSearchParams(location.search);
+  var code = (params.get('c') || '').toUpperCase().replace(/[^A-HJ-NP-Z2-9]/g, '');
+  if (code.length !== 8) code = '';
+
+  var openApp = document.getElementById('openApp');
+  if (code) openApp.href = 'emotica://gift?c=' + code;
+
+  // Show the store button for this phone first; both on a computer.
+  var ua = navigator.userAgent || '';
+  var isAndroid = /Android/i.test(ua);
+  var isIOS = /iPhone|iPad|iPod/i.test(ua) || (/Macintosh/.test(ua) && 'ontouchend' in document);
+  if (isAndroid) document.getElementById('ios').classList.add('hidden');
+  if (isIOS) document.getElementById('android').classList.add('hidden');
+
+  var T = {
+    en: {
+      badge: 'Thanksgiving gift',
+      title: function (g, r) { return g + ' is grateful for you' + (r ? ', ' + r : ''); },
+      desc: 'They gave you Emotica for life: a private journal for how you feel, where you can talk instead of type, with breathing and sleep exercises. Free, nothing to pay, ever.',
+      open: 'Open your gift in Emotica',
+      steps: ['Install Emotica.', 'Come back to this link.', 'Tap "Open your gift in Emotica".'],
+      opened: 'This gift has already been opened.',
+      missing: 'This gift link is not valid. Ask the person who sent it to share it again.',
+      closed: 'The Thanksgiving gifts have ended. Thank you for being part of it.'
+    },
+    hi: {
+      badge: 'थैंक्सगिविंग तोहफ़ा',
+      title: function (g, r) { return g + ' आपके शुक्रगुज़ार हैं' + (r ? ', ' + r : ''); },
+      desc: 'उन्होंने आपको हमेशा के लिए Emotica दिया है: अपनी भावनाओं के लिए एक निजी डायरी, जिसमें लिखने की जगह बोल सकते हैं, साथ में साँस और नींद के अभ्यास। मुफ़्त, कभी कोई भुगतान नहीं।',
+      open: 'Emotica में अपना तोहफ़ा खोलें',
+      steps: ['Emotica इंस्टॉल करें।', 'इस लिंक पर वापस आएँ।', '"Emotica में अपना तोहफ़ा खोलें" दबाएँ।'],
+      opened: 'यह तोहफ़ा पहले ही खोला जा चुका है।',
+      missing: 'यह तोहफ़ा लिंक सही नहीं है। भेजने वाले से इसे दोबारा भेजने को कहें।',
+      closed: 'थैंक्सगिविंग तोहफ़े अब ख़त्म हो गए हैं। साथ रहने के लिए शुक्रिया।'
+    }
+  };
+
+  function apply(t, gift) {
+    document.documentElement.lang = t === T.hi ? 'hi' : 'en';
+    document.getElementById('badge').textContent = t.badge;
+    document.getElementById('desc').textContent = t.desc;
+    openApp.textContent = t.open;
+    var steps = document.getElementById('steps').children;
+    for (var i = 0; i < steps.length; i++) steps[i].textContent = t.steps[i];
+    if (gift) {
+      document.getElementById('title').textContent = t.title(gift.giverName, gift.recipientName);
+      document.getElementById('note').textContent = gift.note || '';
+      document.title = t.title(gift.giverName, '');
+    }
+  }
+
+  function settle(message) {
+    document.getElementById('desc').textContent = message;
+    openApp.classList.add('hidden');
+    document.getElementById('steps').classList.add('hidden');
+  }
+
+  if (!code) { settle(T.en.missing); return; }
+
+  fetch('https://admin.emotica.me/api/gift?code=' + code, { headers: { Accept: 'application/json' } })
+    .then(function (r) { return r.json().then(function (b) { return { status: r.status, body: b }; }); })
+    .then(function (res) {
+      var gift = res.body || {};
+      var t = gift.lang === 'hi' ? T.hi : T.en;
+      if (res.status === 404) { apply(t); settle(t.missing); return; }
+      if (res.status !== 200) return; // keep the generic page; the app shows the details
+      apply(t, gift);
+      if (gift.campaign === 'off') { settle(t.closed); return; }
+      if (gift.redeemed) { settle(t.opened); }
+    })
+    .catch(function () { /* offline or blocked: the generic page still works */ });
+})();
+</script>
+</body>
+</html>
