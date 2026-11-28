@@ -1,0 +1,65 @@
+{
+  "title": "Emotica: Gefühle & Tagebuch",
+  "shortDescription": "Halte Gefühle fest, führe Tagebuch und finde Übungen für deine Stimmung.",
+  "fullDescription": "Gib deinen Gefühlen Raum.\n\nEmotica verbindet Stimmungstagebuch, persönliche Notizen und beruhigende Übungen. Wähle ein Gefühl, gib seine Stärke an und sieh, wie es als Wolke in deinem Gefühlshimmel erscheint.\n\nGEFÜHLE FESTHALTEN\nFröhlich, ruhig, besorgt oder müde? Wähle, was zu dir passt. Ergänze Gedanken und Auslöser oder halte deinen Eintrag kurz.\n\nDEIN GEFÜHLSHIMMEL\nDeine Gefühle erscheinen als Wolken. Tippe auf eine Wolke, um einen Eintrag erneut zu lesen. Verschiebe ihn in den Verlauf und kehre später zu ihm zurück.\n\nEINE PASSENDE ÜBUNG FINDEN\nDeine zuletzt erfassten Gefühle helfen dabei, Übungen vorzuschlagen. Entdecke geführte Meditationen, Einschlafklänge, Geschichten und weitere Übungen. Du kannst auch selbst wählen. Runde Karten stehen für Klänge, rechteckige Karten für geführte Übungen und andere Audioinhalte.\n\nTAGEBUCH FÜHREN\nSchreibe deine Gedanken in deinen eigenen Worten auf. Dein Tagebuch wird auf deinem Gerät verschlüsselt gespeichert. Mit Export und Import verwaltest du deine Sicherungen. Zum Start brauchst du kein Konto.\n\nDEINE EINSTELLUNGEN\nWähle ein Design und das Aussehen deiner Karten. Tägliche Erinnerungen sind optional.\n\nIN DEINER SPRACHE STARTEN\nDie Benutzeroberfläche ist auf Deutsch, Russisch, Englisch, Hindi, Bengali, Marathi, Telugu, Tamil, Gujarati, Urdu, Kannada, Odia, Malayalam, Punjabi, Spanisch sowie in vereinfachtem und traditionellem Chinesisch verfügbar. Übungstitel und Audioinhalte können in einer anderen Sprache sein.\n\nEinige Funktionen erfordern Emotica Pro.\n\nMehr erfahren: https://emotica.me",
+  "releaseNotes": "• Verbliebene englische Texte auf Deutsch, Hindi und Punjabi übersetzt\n• Verbesserte Beschriftungen für Intensität, Einstellungen und Backups\n• Mit den neuesten Verbesserungen für Einführung, Feedback und Emotica Pro",
+  "headings": [
+    [
+      "Ein Himmel",
+      "voll Gefühle."
+    ],
+    [
+      "Gib deinem",
+      "Gefühl Raum."
+    ],
+    [
+      "Finde deine",
+      "Pause."
+    ],
+    [
+      "Klänge oder",
+      "Anleitung."
+    ],
+    [
+      "Deine Worte.",
+      "Dein Raum."
+    ],
+    [
+      "Wie fühlst",
+      "du dich?"
+    ],
+    [
+      "Hör zu.",
+      "Lass los."
+    ],
+    [
+      "Sprich es",
+      "einfach aus."
+    ],
+    [
+      "Ein Coach,",
+      "der zuhört."
+    ],
+    [
+      "Mach ihn",
+      "zu deinem."
+    ]
+  ],
+  "featureHeading": [
+    "Platz für jedes",
+    "Gefühl."
+  ],
+  "altText": {
+    "feature-graphic.png": "Emotica-App-Symbol und Platz für jedes Gefühl. Fünf gefüllte pastellfarbene Wolken mit Gefühlen und Symbolen.",
+    "01-mental-sky.png": "Gespeicherte Gefühle erscheinen als Wolken im Gefühlshimmel.",
+    "02-feelings.png": "Wähle ein Gefühl und gib an, wie stark es ist.",
+    "03-exercises.png": "Übungen und Vorschläge passend zu deinen zuletzt erfassten Gefühlen.",
+    "04-exercise-cards.png": "Die Einführung erklärt runde Klangkarten und rechteckige Karten für geführte Übungen.",
+    "05-journal.png": "Ein persönlicher Tagebucheintrag mit Titel und Gedanken.",
+    "06-emotion-log.png": "Wähle Gefühle aus den illustrierten Kategorien.",
+    "07-player.png": "Audioplayer mit Cover, Wiedergabesteuerung und Einschlaf-Timer.",
+    "08-live-coach.png": "Live-Coach-Sprachgespräch: der Coach begrüßt dich hörbar, das Gespräch erscheint als Transkript.",
+    "09-coach-chat.png": "Coach-Chat: frag nach Mustern in deinen Gefühlen und erhalte eine durchdachte Antwort.",
+    "10-personalize.png": "Coach anpassen: Begleiter, Name, Chatsprache und Coaching-Stil wählen."
+  }
+}

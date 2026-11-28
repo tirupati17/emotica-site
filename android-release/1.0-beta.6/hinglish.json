@@ -1,0 +1,19 @@
+{
+  "note": "Hinglish (Roman Hindi), the default for India. Play has no Hinglish locale, so this set goes on the en-IN listing, which Indian users on English phones see by default. Render: STORE_LANGUAGES=hi-Latn node scripts/render-android-store-pack.cjs <captures> --theme=warm (English captures). Output: hi-Latn/warm/.",
+  "playLocale": "en-IN",
+  "title": "Emotica: Mood & Journal",
+  "shortDescription": "Apni feelings log karo, Mental Sky dekho, aur mood ke hisaab se exercises pao.",
+  "headings": [
+    ["Feelings ka", "aasmaan."],
+    ["Apni feeling", "chuno."],
+    ["Thoda", "ruk jao."],
+    ["Sounds ya", "guidance."],
+    ["Apne shabd,", "apni jagah."],
+    ["Kaisa lag", "raha hai?"],
+    ["Suno.", "Relax karo."],
+    ["Bas bolo,", "dil se."],
+    ["Ek coach jo", "sunta hai."],
+    ["Ise apna", "banao."]
+  ],
+  "featureHeading": ["Har feeling ke", "liye jagah."]
+}
